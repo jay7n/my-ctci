@@ -1,5 +1,5 @@
 
-function IsUnique(str) {
+module.exports = function IsUnique(str) {
   const charSet = new Array(128).fill(false);
   for (let i = 0; i < str.length; i++) {
     const cc = str.charCodeAt(i);
@@ -11,4 +11,3 @@ function IsUnique(str) {
   }
   return true;
 }
-module.exports = IsUnique;

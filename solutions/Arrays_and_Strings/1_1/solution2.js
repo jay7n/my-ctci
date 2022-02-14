@@ -1,5 +1,5 @@
 
-function IsUnique(str) {
+module.exports = function IsUnique(str) {
   const charSet = createCharSet(128);
   for (let i = 0; i < str.length; i++) {
     if (charAtCharSetIsUnique(str[i], charSet) == false) {
@@ -8,7 +8,6 @@ function IsUnique(str) {
   }
   return true;
 }
-module.exports = IsUnique;
 
 function createCharSet(charNum) {
   let byteNum = Math.floor(charNum / 8);

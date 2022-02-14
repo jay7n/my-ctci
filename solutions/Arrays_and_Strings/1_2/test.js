@@ -1,4 +1,4 @@
-exports.testWithSolution = function(solution) {
+const testWithSolution = function(solution) {
 	test('str "abcdefg" and "cbagfde" is unique ', () => {
 		expect(solution('abcdefg', 'cbagfde')).toBe(true);
 	});
@@ -18,3 +18,6 @@ exports.testWithSolution = function(solution) {
 		expect(solution('o p q', 'pqo')).toBe(false);
 	});
 }
+
+const Solution1 = require('./solution1');
+testWithSolution(Solution1);
