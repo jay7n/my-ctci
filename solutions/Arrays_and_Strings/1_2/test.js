@@ -1,23 +1,29 @@
-const testWithSolution = function(solution) {
-	test('str "abcdefg" and "cbagfde" is unique ', () => {
+const testWithSolution = function(title, solution) {
+  test(title + ': ' +
+	'str "abcdefg" and "cbagfde" is unique ', () => {
 		expect(solution('abcdefg', 'cbagfde')).toBe(true);
 	});
-	test('str "abcDefg" and "abcdefg" is not unique', () => {
+  test(title + ': ' +
+	'str "abcDefg" and "abcdefg" is not unique', () => {
 		expect(solution('abcDefg', 'abcdefg')).toBe(false);
 	});
-	test('str "hijjkl" and "kljiih" is not unique', () => {
+  test(title + ': ' +
+	'str "hijjkl" and "kljiih" is not unique', () => {
 		expect(solution('hijjkl', 'kljiih')).toBe(false);
 	});
-	test('str "hijjkl" and "kljjih" is unique', () => {
+	test(title + ': ' +
+	'str "hijjkl" and "kljjih" is unique', () => {
 		expect(solution('hijjkl', 'kljjih')).toBe(true);
 	});
-	test('str "o p q" and "p  qo" is unique', () => {
+	test(title + ': ' +
+	'str "o p q" and "p  qo" is unique', () => {
 		expect(solution('o p q', 'p  qo')).toBe(true);
 	});
-	test('str "o p q" and "pqo" is not unique', () => {
+	test(title + ': ' +
+	'str "o p q" and "pqo" is not unique', () => {
 		expect(solution('o p q', 'pqo')).toBe(false);
 	});
 }
 
 const Solution1 = require('./solution1');
-testWithSolution(Solution1);
+testWithSolution('Solution1', Solution1);
