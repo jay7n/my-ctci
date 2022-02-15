@@ -9,8 +9,8 @@ module.exports = function URLify(str, length) {
 			newLength += 2;
 		}
 	}
-	const array = str.split('');
-	array.length = newLength; // point1 - in javascript array length can be explicitly set
+	const array = str.split(''); // point1 - in javascript str can be decomposed to arrays
+	array.length = newLength; // point2 - in javascript array length can be explicitly set
 
 	let j = newLength - 1;
 	for (let i = length - 1; i >= 0; i--) {
