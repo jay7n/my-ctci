@@ -5,6 +5,11 @@ const testWithSolution = function(title, solution) {
 		expect(res).toBe(true);
 	});
 	test(title + ': ' +
+	'str "tacocat" is a permutation of a palindrome', () => {
+		const res = solution('tacocat');
+		expect(res).toBe(true);
+	});
+	test(title + ': ' +
 	'str "abc" is not a permutation of a palindrome', () => {
 		const res = solution('abc');
 		expect(res).toBe(false);
