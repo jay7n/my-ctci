@@ -1,5 +1,15 @@
 const testWithSolution = function(title, solution) {
 	test(title + ': ' +
+	'str "ab" is not a permutation of a palindrome', () => {
+		const res = solution('ab');
+		expect(res).toBe(false);
+	});
+	test(title + ': ' +
+	'str "a" is a permutation of a palindrome', () => {
+		const res = solution('a');
+		expect(res).toBe(true);
+	});
+	test(title + ': ' +
 	'str "tacoocat" is a permutation of a palindrome', () => {
 		const res = solution('tacoocat');
 		expect(res).toBe(true);
@@ -48,5 +58,7 @@ const testWithSolution = function(title, solution) {
 
 const Solution1 = require('./solution1');
 const Solution2 = require('./solution2');
+const Solution3 = require('./solution3');
 testWithSolution('Solution1', Solution1);
-testWithSolution('Solution1', Solution2);
+testWithSolution('Solution2', Solution2);
+testWithSolution('Solution3', Solution3);
