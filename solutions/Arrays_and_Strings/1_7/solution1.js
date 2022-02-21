@@ -1,5 +1,5 @@
 module.exports = function RotateMatrix(matrix) {
-	console.log('matrix before = ', matrix);
+	// console.log('matrix before = ', matrix);
 
 	const mtrlen = matrix.length;
 	const initialEdge = Math.sqrt(mtrlen);
@@ -11,25 +11,25 @@ module.exports = function RotateMatrix(matrix) {
 	let edge = initialEdge;
 
 	while(edge > 1) {
-		console.log('LOOP EDGE =', edge);
+		// console.log('LOOP EDGE =', edge);
 		for (let i = 0; i < edge - 1; i++) {
-			console.log('initialEdge = ', initialEdge);
+			// console.log('initialEdge = ', initialEdge);
 			let prevIdx = getArrayIdxFromMatrixIdx([startIdx[0] + i, startIdx[1]], initialEdge);
-			console.log('prevIdx = ', prevIdx);
+			// console.log('prevIdx = ', prevIdx);
 			let tmp = matrix[prevIdx];
-			console.log('tmp = ', tmp);
+			// console.log('tmp = ', tmp);
 			let sequenceNumber = 3;
 			while (sequenceNumber > 0) {
-				console.log('sequenceNumber = ', sequenceNumber);
+				// console.log('sequenceNumber = ', sequenceNumber);
 				const curIdx = getArrayIdx(startIdx, i, edge, initialEdge, sequenceNumber);
-				console.log('curIdx = ', curIdx,  'prevIdx = ', prevIdx);
+				// console.log('curIdx = ', curIdx,  'prevIdx = ', prevIdx);
 				matrix[prevIdx] = matrix[curIdx];
 				prevIdx = curIdx;
 				--sequenceNumber;
-				console.log('matrix = ', matrix);
+				// console.log('matrix = ', matrix);
 			}
 			matrix[prevIdx] = tmp;
-			console.log('matrix = ', matrix);
+			// console.log('matrix = ', matrix);
 		}
 		startIdx[0]++;
 		startIdx[1]++;
@@ -37,14 +37,14 @@ module.exports = function RotateMatrix(matrix) {
 	}
 
 	
-	console.log('matrix after = ', matrix);
+	// console.log('matrix after = ', matrix);
 	return matrix;
 
 }
 
 function getArrayIdx(startIdx, marchingStep, edge, initialEdge, sequenceNumber) {
 	const marchingStartIdx = getMarchingStartIdx(startIdx, edge, sequenceNumber);
-	console.log('marchingStartIdx = ', marchingStartIdx);
+	// console.log('marchingStartIdx = ', marchingStartIdx);
 	const matrixIdx = getMatrixIdx(
 		marchingStartIdx, 
 		marchingStep, 
@@ -52,9 +52,9 @@ function getArrayIdx(startIdx, marchingStep, edge, initialEdge, sequenceNumber) 
 		sequenceNumber % 2 == 0, 
 		sequenceNumber < 2
 	);
-	console.log('matrixIdx = ', matrixIdx);
+	// console.log('matrixIdx = ', matrixIdx);
 	const arrayIdx = getArrayIdxFromMatrixIdx(matrixIdx, initialEdge);
-	console.log('arrayIdx = ', arrayIdx);
+	// console.log('arrayIdx = ', arrayIdx);
 	return arrayIdx;
 }
 
@@ -72,11 +72,11 @@ function getMarchingStartIdx(initialStartIdx, edge, sequenceNumber) {
 }
 
 function getMatrixIdx(marchingStartIdx, marchingStep, edge, isHorizontalDirection, isPositiveOrder) {
-	console.log('marchingStep = ', marchingStep);
+	// console.log('marchingStep = ', marchingStep);
 	const matrixIdx = [marchingStartIdx[0], marchingStartIdx[1]];
-	console.log('matrixIdx = ', matrixIdx);
-	console.log('isHorizontalDirection = ', isHorizontalDirection);
-	console.log('isPositiveOrder = ', isPositiveOrder);
+	// console.log('matrixIdx = ', matrixIdx);
+	// console.log('isHorizontalDirection = ', isHorizontalDirection);
+	// console.log('isPositiveOrder = ', isPositiveOrder);
 	if (isHorizontalDirection) {
 		if (isPositiveOrder) {
 			matrixIdx[0] += marchingStep;
