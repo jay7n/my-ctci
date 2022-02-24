@@ -20,11 +20,12 @@
  * the lookup cost is fairly cheap and constant as it's from Array's
  * Random-Access.
  *
- * In CTCI questions such as 1_1, 1_2, 1_4 are all cases of this kind of idea. 
+ * In CTCI questions such as 1_1, 1_2, 1_4, 1_5 are all cases of this kind of
+ * idea. 
  *
  *
  * ## String Traverse, Immediate Return and Fixed Length Array
- * 
+ *
  * According to the nature of the given question, we do not need
  * HashTable(Lookup Table) or Random-Access. What we need is to traverse the
  * string or array element by element. Such a traversal is inevitable since the
@@ -32,6 +33,22 @@
  * one element hits some condition, where usually we can get the conclusion then
  * and immediately return. An immediate return won't change the computing cost
  * from the Big-O perspective, but it's still worth the optimization for small
- * questions（as the question is small, you should do it more precisely I think）.
+ * questions（as the question is small, you should do it more precisely I
+ * think）.
+ *
+ * Most modern languages support a Resizable-Array DS, whose capacity
+ * dynamically increases when one more new item is being added but no more space
+ * can be given there. Generally new allocated size would be twice the current
+ * size, so for instance at the beginning the array has 1kb, next time it would
+ * grow to 2kb, and 4kb, 8kb, 16kb... and so on, with each reallocation has a
+ * O(n) copying cost, but on average such cost is lower than we think, since
+ * they're amortized.
+ *
+ * However, if there exists any chance that we can know the total needed
+ * capacity in advance, we really should consider to grab the chance. A
+ * resizable array could be replaced to a fixed length array, which means
+ * reallocations we talked above are not necessary any more, and zero cost needs
+ * to pay. It's a pretty good optimization. In CTCI the question 1_3 reflected
+ * this idea.
  *
  */
