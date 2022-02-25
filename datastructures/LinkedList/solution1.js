@@ -16,6 +16,7 @@ class LinkedList {
 			if (prev) {
 				prev.next = cur; // point1 - at first time prev is null
 			}
+			cur.prev = prev; // point2 - bidirectional weave. don't forget here
 			cur.data = elem;
 			prev = cur;
 			if (this.head == null) {
@@ -30,15 +31,18 @@ class LinkedList {
 		for (let i = 0; i < idx; i++) {
 			cur = cur.next;
 		}
-		return cur.data;
+		return cur;
 	}
 
 	toArray() {
-		const array = [this.head.data];
-		let cur = this.head.next;
-		while (cur) {
-			array.push(cur.data);
-			cur = cur.next;
+		const array = [];
+		if (this.head) { // point3 - check if head exists
+			array.push(this.head.data);
+			let cur = this.head.next;
+			while (cur) {
+				array.push(cur.data);
+				cur = cur.next;
+			}
 		}
 		return array;
 	}
