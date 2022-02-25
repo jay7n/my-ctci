@@ -50,5 +50,6 @@
  * reallocations we talked above are not necessary any more, and zero cost needs
  * to pay. It's a pretty good optimization. In CTCI the question 1_3 reflected
  * this idea.
+ * 
  *
  */
