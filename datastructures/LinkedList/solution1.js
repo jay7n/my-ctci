@@ -41,11 +41,15 @@ class LinkedList {
 		if (cur == null) 
 			return;
 
-		if (cur.next) {
-			cur.next.prev = cur.prev;
+		this.remove(cur);
+	}
+
+	remove(elem) {
+		if (elem.next) {
+			elem.next.prev = elem.prev;
 		}
-		if (cur.prev) {
-			cur.prev.next = cur.next; 
+		if (elem.prev) {
+			elem.prev.next = elem.next; 
 		}
 	}
 
