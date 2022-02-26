@@ -1,7 +1,9 @@
+// this solution is aim for the basic requirement of the question
+// in which condition a temporary buffer is allowed to use (the hash table 'Set' here)
+//
 module.exports = function RemoveDups(linkedList) {
 	const set = new Set(); // for convenience just use javascript's builtin Set here
 	let curptr = linkedList.head;
-	console.log('linkedListNode = ', curptr);
 	while (curptr) {
 		if (set.has(curptr.data)) {
 			deleteMyselfInLinkedList(curptr);

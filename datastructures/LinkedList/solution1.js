@@ -28,15 +28,30 @@ class LinkedList {
 
 	at(idx) {
 		let cur = this.head;
-		for (let i = 0; i < idx; i++) {
+		let i = 0;
+		while ( i < idx && cur) { // point3 - check if cur is rolling to the end of the list
 			cur = cur.next;
+			i++;
 		}
 		return cur;
 	}
 
+	removeAt(idx) {
+		const cur = this.at(idx); // point4 - check if cur exists
+		if (cur == null) 
+			return;
+
+		if (cur.next) {
+			cur.next.prev = cur.prev;
+		}
+		if (cur.prev) {
+			cur.prev.next = cur.next; 
+		}
+	}
+
 	toArray() {
 		const array = [];
-		if (this.head) { // point3 - check if head exists
+		if (this.head) { // point5 - check if head exists
 			array.push(this.head.data);
 			let cur = this.head.next;
 			while (cur) {

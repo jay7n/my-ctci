@@ -47,6 +47,18 @@ const testWithSolution = function(title, LinkedList) {
 		const elm = linkedList.at(2);
 		expect(elm.next.data).toBe(4);
 	});
+	test(title + ': ' +
+	'linked list [1,2,3,4] becomes [1,2,4] after removing elem at idx=2', () => {
+		const linkedList = new LinkedList([1,2,3,4]);
+		linkedList.removeAt(2);
+		expect(linkedList.toArray()).toStrictEqual([1,2,4]);
+	});
+	test(title + ': ' +
+	'linked list [1,2,3,4] becomes [1,2,3,4] after removing elem at idx=10', () => {
+		const linkedList = new LinkedList([1,2,3,4]);
+		linkedList.removeAt(10);
+		expect(linkedList.toArray()).toStrictEqual([1,2,3,4]);
+	});
 }
 
 const { LinkedList } = require('./solution1');
