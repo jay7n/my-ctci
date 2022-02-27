@@ -10,8 +10,8 @@ module.exports = function ReturnKthToLast(linkedList, kthToLast) {
 		ptr1 = ptr2 = linkedList.head;
 
 		let count = 1;
-		while(ptr1) {
-			if (count > kthToLast) { // point1 - count should be greater > (not greater or equal >=) than kthToLast
+		while(ptr1) { // point1 - always treat the current loop as the operation for the current traversed node (not the next or some others) 
+			if (count > kthToLast) { // point2 - count should be greater > (not greater or equal >=) than kthToLast
 				ptr2 = ptr2.next;
 			}
 			count++;
@@ -19,8 +19,8 @@ module.exports = function ReturnKthToLast(linkedList, kthToLast) {
 		}
 
 		const len = count - 1;
-		if (kthToLast <= len && kthToLast >= 1) { // point2 - need to consider if kthToLast exceeds the boundaries !
-			if (ptr2) { // point3 - ptr2 at this moment can still be null due to potential overflowed kthToLast idx access
+		if (kthToLast <= len && kthToLast >= 1) { // point3 - need to consider if kthToLast exceeds the boundaries !
+			if (ptr2) { // point4 - ptr2 at this moment can still be null due to potential overflowed kthToLast idx access
 				return ptr2.data;
 			}
 		}
