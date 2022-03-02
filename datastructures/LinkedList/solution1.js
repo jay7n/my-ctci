@@ -8,7 +8,7 @@ class LinkedList {
 	head;
 	tail;
 
-	constructor(rawList) {
+	constructor(rawList = []) {
 		let cur;
 		let prev;
 		for (const elem of rawList) {
