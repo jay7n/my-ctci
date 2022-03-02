@@ -59,6 +59,18 @@ const testWithSolution = function(title, LinkedList) {
 		linkedList.removeAt(10);
 		expect(linkedList.toArray()).toStrictEqual([1,2,3,4]);
 	});
+	test(title + ': ' +
+	'linked list [1,2,3] becomes [1,2,3,4] after adding elem 4', () => {
+		const linkedList = new LinkedList([1,2,3]);
+		linkedList.add(4);
+		expect(linkedList.toArray()).toStrictEqual([1,2,3,4]);
+	});
+	test(title + ': ' +
+	'linked list [] becomes [5] after adding elem 5', () => {
+		const linkedList = new LinkedList([]);
+		linkedList.add(5);
+		expect(linkedList.toArray()).toStrictEqual([5]);
+	});
 }
 
 const { LinkedList } = require('./solution1');

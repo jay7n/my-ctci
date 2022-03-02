@@ -26,6 +26,22 @@ class LinkedList {
 		this.tail = cur;
 	}
 
+	add(val) {
+		const newnode = new LinkedListNode();
+		newnode.data = val;
+		newnode.next = null;
+
+		if (this.head == null) {
+			this.head = this.tail = newnode;
+		} else {
+			const tail = this.tail;
+			newnode.prev = tail;
+			tail.next = newnode;
+			this.tail = newnode;
+		}
+
+	}
+
 	at(idx) {
 		let cur = this.head;
 		let i = 0;
