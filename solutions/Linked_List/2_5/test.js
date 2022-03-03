@@ -8,6 +8,27 @@ const testWithSolution = function(title, solution) {
 		const lres = solution(l1, l2);
 		expect(lres.toArray()).toStrictEqual([2,1,9]);
 	});
+	test(title + ':' +
+	'number 5([5]) plus number 5([5]) is 10([0,1])', () => {
+		const l1 = new LinkedList([5]);
+		const l2 = new LinkedList([5]);
+		const lres = solution(l1, l2);
+		expect(lres.toArray()).toStrictEqual([0,1]);
+	});
+	test(title + ':' +
+	'number 5([5]) plus number 3([3]) is 8([8])', () => {
+		const l1 = new LinkedList([5]);
+		const l2 = new LinkedList([3]);
+		const lres = solution(l1, l2);
+		expect(lres.toArray()).toStrictEqual([8]);
+	});
+	test(title + ':' +
+	'number 9([9]) plus number 999([9,9,9]) is 1008([8,0,0,1])', () => {
+		const l1 = new LinkedList([9]);
+		const l2 = new LinkedList([9,9,9]);
+		const lres = solution(l1, l2);
+		expect(lres.toArray()).toStrictEqual([8,0,0,1]);
+	});
 }
 
 const testFollowUpWithSolution = function(title, solution) {
