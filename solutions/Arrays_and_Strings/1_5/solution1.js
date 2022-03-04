@@ -15,10 +15,6 @@ module.exports = function OneAway(str1, str2) {
 		return false;
 	}
 
-	if (str1len < str2len) {
-
-	}
-
 	let doneEdit = false;
 	let i = 0, j = 0;
 	do {
