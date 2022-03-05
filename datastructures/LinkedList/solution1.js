@@ -2,6 +2,9 @@ class LinkedListNode {
 	prev;
 	data;
 	next;
+	constructor(data) {
+		this.data = data;
+	}
 }
 
 class LinkedList {
@@ -69,6 +72,10 @@ class LinkedList {
 	add(val) {
 		const newnode = new LinkedListNode();
 		newnode.data = val;
+		this.addNode(newnode);
+	}
+
+	addNode(newnode) {
 		newnode.next = null;
 
 		if (this.head == null) { // point6 - maybe the linkedlist is empty right now
@@ -79,7 +86,6 @@ class LinkedList {
 			tail.next = newnode;
 			this.tail = newnode;
 		}
-
 	}
 }
 

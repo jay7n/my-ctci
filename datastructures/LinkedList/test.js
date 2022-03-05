@@ -60,10 +60,11 @@ const testWithSolution = function(title, LinkedList) {
 		expect(linkedList.toArray()).toStrictEqual([1,2,3,4]);
 	});
 	test(title + ': ' +
-	'linked list [1,2,3] becomes [1,2,3,4] after adding elem 4', () => {
+	'linked list [1,2,3] becomes [1,2,3,4,5] after adding elem 4 and 5', () => {
 		const linkedList = new LinkedList([1,2,3]);
 		linkedList.add(4);
-		expect(linkedList.toArray()).toStrictEqual([1,2,3,4]);
+		linkedList.add(5);
+		expect(linkedList.toArray()).toStrictEqual([1,2,3,4,5]);
 	});
 	test(title + ': ' +
 	'linked list [] becomes [5] after adding elem 5', () => {
@@ -71,7 +72,23 @@ const testWithSolution = function(title, LinkedList) {
 		linkedList.add(5);
 		expect(linkedList.toArray()).toStrictEqual([5]);
 	});
+	test(title + ': ' +
+	'linked list [1,2,3] becomes [1,2,3,4,5] after adding node(data=4) and node(data=5)', () => {
+		const linkedList = new LinkedList([1,2,3]);
+		const newnode1 = new LinkedListNode(4);
+		const newnode2 = new LinkedListNode(5);
+		linkedList.addNode(newnode1);
+		linkedList.addNode(newnode2);
+		expect(linkedList.toArray()).toStrictEqual([1,2,3,4,5]);
+	});
+	test(title + ': ' +
+	'linked list [] becomes [5] after adding node(data=5)', () => {
+		const linkedList = new LinkedList([]);
+		const newnode = new LinkedListNode(5);
+		linkedList.addNode(newnode);
+		expect(linkedList.toArray()).toStrictEqual([5]);
+	});
 }
 
-const { LinkedList } = require('./solution1');
+const { LinkedList, LinkedListNode } = require('./solution1');
 testWithSolution('Solution1', LinkedList);
