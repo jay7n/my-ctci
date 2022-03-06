@@ -39,21 +39,28 @@ class LinkedList {
 		return cur;
 	}
 
-	removeAt(idx) {
+	removeNodeAt(idx) {
 		const cur = this.at(idx); // point4 - check if cur exists
 		if (cur == null) 
 			return;
 
-		this.remove(cur);
+		return this.removeNode(cur);
 	}
 
-	remove(elem) {
+	removeNode(elem) {
 		if (elem.next) {
 			elem.next.prev = elem.prev;
 		}
 		if (elem.prev) {
 			elem.prev.next = elem.next; 
 		}
+		if (elem === this.tail) { // point5 - check if it's tail when removing a node
+			this.tail = elem.prev;
+		}
+		if (elem === this.head) { // point6 - check if it's head when removing a node
+			this.head = elem.next;
+		}
+		return elem;
 	}
 
 	toArray() {

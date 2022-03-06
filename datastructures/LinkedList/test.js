@@ -50,13 +50,13 @@ const testWithSolution = function(title, LinkedList) {
 	test(title + ': ' +
 	'linked list [1,2,3,4] becomes [1,2,4] after removing elem at idx=2', () => {
 		const linkedList = new LinkedList([1,2,3,4]);
-		linkedList.removeAt(2);
+		linkedList.removeNodeAt(2);
 		expect(linkedList.toArray()).toStrictEqual([1,2,4]);
 	});
 	test(title + ': ' +
 	'linked list [1,2,3,4] becomes [1,2,3,4] after removing elem at idx=10', () => {
 		const linkedList = new LinkedList([1,2,3,4]);
-		linkedList.removeAt(10);
+		linkedList.removeNodeAt(10);
 		expect(linkedList.toArray()).toStrictEqual([1,2,3,4]);
 	});
 	test(title + ': ' +
