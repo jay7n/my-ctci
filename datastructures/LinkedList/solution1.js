@@ -72,7 +72,7 @@ class LinkedList {
 	add(val) {
 		const newnode = new LinkedListNode();
 		newnode.data = val;
-		this.addNode(newnode);
+		return this.addNode(newnode);
 	}
 
 	addNode(newnode) {
@@ -86,6 +86,8 @@ class LinkedList {
 			tail.next = newnode;
 			this.tail = newnode;
 		}
+
+		return newnode;
 	}
 }
 
