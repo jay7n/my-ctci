@@ -76,8 +76,6 @@ class LinkedList {
 	}
 
 	addNode(newnode) {
-		newnode.next = null;
-
 		if (this.head == null) { // point6 - maybe the linkedlist is empty right now
 			this.head = this.tail = newnode;
 		} else {
