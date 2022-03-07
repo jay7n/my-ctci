@@ -27,6 +27,10 @@ class Stack {
 		}
 		return null;
 	}
+
+	toArray() {
+		return this.list.toArray();
+	}
 }
 
 module.exports = {
