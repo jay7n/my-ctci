@@ -3,11 +3,23 @@ const testWithSolution = function(title, SolutionSetOfStacks) {
 	'Normal Operations', () => {
 		const ss = new SolutionSetOfStacks(3);
 		ss.push(1);
+
+		expect(ss.peek()).toBe(1);
+
 		ss.push(2);
-		ss.push(3);
 		ss.pop();
 
-		expect(ss.peek()).toBe(2);
+		expect(ss.peek()).toBe(1);
+
+		ss.push(2);
+		ss.push(3);
+		ss.push(4);
+
+		expect(ss.peek()).toBe(4);
+
+		ss.pop();
+
+		expect(ss.peek()).toBe(3);
 
 		ss.push(4);
 		ss.push(5);
@@ -24,7 +36,7 @@ const testWithSolution = function(title, SolutionSetOfStacks) {
 		ss.pop();
 		ss.pop();
 
-		expect(ss.peek()).toBe(2);
+		expect(ss.peek()).toBe(3);
 
 	});
 }
