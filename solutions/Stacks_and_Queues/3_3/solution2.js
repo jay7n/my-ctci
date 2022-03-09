@@ -3,44 +3,42 @@ const { Stack } = require('../../../datastructures/Stack/solution1');
 class SetsOfStack {
 	singleStackCapacity;
 	stacks;
+	// stacksElemsCount;
 	curStackIdx;
-	nextElemIdx;
 
 	constructor(singleStackCapacity) {
 		this.singleStackCapacity = singleStackCapacity;
 		this.stacks = [];
-		this.nextElemIdx = 0;
+		// this.stacksElemsCount = [];
 		this.curStackIdx = 0;
 	}
 
 	push(val) {
-		if (this.nextElemIdx === this.singleStackCapacity) {
-			this.curStackIdx++;
-			this.nextElemIdx = 0;
-		}
 		let stack = this.stacks[this.curStackIdx];
 		if (stack == null) {
-			stack = new Stack();
-			this.stacks[this.curStackIdx] = stack;
+			this.stacks[this.curStackIdx] = stack = new Stack();
+		} 
+		if (stack.size() >= this.singleStackCapacity) {
+			this.curStackIdx++;
+			this.push(val); // point1 - a limited recursion
+		} else {
+			stack.push(val);
 		}
-		stack.push(val);
-		this.nextElemIdx++;
 	}
 
 	pop() {
 		let stack = this.stacks[this.curStackIdx];
 		// console.log('cur stack idx = ', this.curStackIdx, 'next elem idx = ', this.nextElemIdx, 'stack = ', this.stacks[this.curStackIdx].toArray());
-		stack.pop();
-		if (stack.isEmpty()) {
-			this.nextElemIdx = this.singleStackCapacity;
+		const poppedVal = stack.pop();
+		if (stack.isEmpty() && this.curStackIdx > 0) { // mind the condition: this.curStackIdx > 0
 			this.curStackIdx--;
-		} else { // point1 - 'this.nextElemIdx--' should be wrapped in else-part-logic so as to be corresponded with push()
-			this.nextElemIdx--;
 		}
+		return poppedVal;
 	}
 
 	peek() {
-		// console.log('cur stack idx = ', this.curStackIdx, 'next elem idx = ', this.nextElemIdx, 'stack = ', this.stacks[this.curStackIdx].toArray());
+		console.log('cur stack idx = ', this.curStackIdx, 'stacks = ', this.stacks.map(s => s.toArray()));
+		// 'stack = ', this.stacks[this.curStackIdx].toArray()
 		let stack = this.stacks[this.curStackIdx];
 		if (stack) {
 			return stack.peek();
@@ -48,8 +46,13 @@ class SetsOfStack {
 		return null;
 	}
 
-	popAt(staskIdx) {
-
+	popAt(stackIdx) {
+		if (stackIdx >= 0 && stackIdx < this.stacks.length) {
+			const stack = this.stacks[stackIdx];
+			const poppedVal = stack.pop();
+			return poppedVal;
+		}
+		return null;
 	}
 }
 
