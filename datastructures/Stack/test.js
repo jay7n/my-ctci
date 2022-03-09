@@ -14,6 +14,11 @@ const testWithSolution = function(title, Stack) {
 		expect(stack.peek()).toBe(2);
 		
 		expect(val).toBe(1);
+		expect(stack.isEmpty()).toBe(false);
+
+		stack.pop();
+		expect(stack.peek()).toBe(null);
+		expect(stack.isEmpty()).toBe(true);
 
 	});
 }

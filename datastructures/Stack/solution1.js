@@ -28,6 +28,10 @@ class Stack {
 		return null;
 	}
 
+	isEmpty() {
+		return this.list == null || this.list.head == null;	
+	}
+
 	toArray() {
 		return this.list.toArray();
 	}
