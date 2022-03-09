@@ -47,6 +47,10 @@ class SetsOfStack {
 		}
 		return null;
 	}
+
+	popAt(staskIdx) {
+
+	}
 }
 
 module.exports = SetsOfStack;
