@@ -94,6 +94,10 @@ class LinkedList {
 
 		return newnode;
 	}
+
+	isEmpty() {
+		return this.head == null && this.tail == null;
+	}
 }
 
 exports.LinkedListNode = LinkedListNode;

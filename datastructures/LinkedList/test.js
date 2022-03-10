@@ -88,6 +88,14 @@ const testWithSolution = function(title, LinkedList) {
 		linkedList.addNode(newnode);
 		expect(linkedList.toArray()).toStrictEqual([5]);
 	});
+	test(title + ': ' +
+	'linked list [5,6] becomes empty after removing 5 and 6', () => {
+		const linkedList = new LinkedList([5]);
+		linkedList.add(6);
+		linkedList.removeNodeAt(0);
+		linkedList.removeNodeAt(0);
+		expect(linkedList.isEmpty()).toBe(true);
+	});
 }
 
 const { LinkedList, LinkedListNode } = require('./solution1');
