@@ -15,7 +15,7 @@ class Stack {
 	}
 
 	pop() {
-		if (this.list.tail) {
+		if (this.list.tail != null) {
 			const removedNode = this.list.removeNode(this.list.tail);
 			this.listSize--;
 			if (removedNode) {
@@ -26,7 +26,7 @@ class Stack {
 	}
 
 	peek() {
-		if (this.list.tail) {
+		if (this.list.tail != null) {
 			return this.list.tail.data;
 		}
 		return null;

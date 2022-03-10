@@ -1,6 +1,6 @@
 const testWithSolution = function(title, SolutionSetOfStacks) {
 	test(title + ':' +
-	'Normal Operations', () => {
+	'', () => {
 		const ss = new SolutionSetOfStacks(3);
 		ss.push(1);
 
