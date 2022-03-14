@@ -40,7 +40,7 @@ class Graph {
 		return this.vertices.find(v => v === vert) !== null;
 	}
 
-	getVertByData(vertData) {
+	getVertexByData(vertData) {
 		return this.vertices.find(v => v.data === vertData);
 	}
 
@@ -53,7 +53,7 @@ class Graph {
 	}
 
 	removeVertexByData(vertData) {
-		const vert = this.getVertByData(vertData);
+		const vert = this.getVertexByData(vertData);
 		if (vert) {
 			return this.removeVertex(vert);
 		}
@@ -77,9 +77,18 @@ class Graph {
 		return false;
 	}
 
+	print() {
+		let resStr = '';
+		this.vertices.map(v => {
+			resStr += `vert: ${v.data}\n`;
+			resStr += `\tneighbors: ${v.neighbors.map(n => n.data)}\n`;
+		});
+		console.log(resStr);
+	}
+
 }
 
 module.exports = {
-	GraphNode,
+	GraphVertex,
 	Graph
 }
