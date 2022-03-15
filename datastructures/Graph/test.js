@@ -26,7 +26,8 @@ const testWithSolution = function(title) {
 		vs[0].addNeighborVert(vs[3]);
 		vs[0].addNeighborVert(vs[4]);
 
-		graph.addEdge(vs[1], vs[2]);
+		graph.addEdge(vs[5], vs[6]);
+		graph.addOneWayEdge(vs[7], vs[8]);
 
 		vs[1].addNeighborVert(vs[2]);
 		vs[1].addNeighborVert(vs[3]);

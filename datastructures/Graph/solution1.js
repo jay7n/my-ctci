@@ -7,8 +7,14 @@ class GraphVertex {
 		this.neighbors = [];
 	}
 
+	includeNeighbor(vert) {
+		return this.neighbors.find(v => v === vert) != null;
+	}
+
 	addNeighborVert(vert) {
-		this.neighbors.push(vert);
+		if (this.includeNeighbor(vert) == false) {
+			this.neighbors.push(vert);
+		}
 	}
 
 	removeNeighborVert(vert) {
@@ -37,7 +43,7 @@ class Graph {
 	}
 
 	includeVert(vert) {
-		return this.vertices.find(v => v === vert) !== null;
+		return this.vertices.find(v => v === vert) != null;
 	}
 
 	getVertexByData(vertData) {
@@ -60,6 +66,14 @@ class Graph {
 		return null;
 	}
 
+	addOneWayEdge(vertFrom, vertTo) {
+		if (this.includeVert(vertFrom) && this.includeVert(vertTo)) {
+			vertFrom.addNeighborVert(vertTo);
+			return true;
+		}
+		return false;
+	}
+
 	addEdge(vert1, vert2) {
 		if (this.includeVert(vert1) && this.includeVert(vert2)) {
 			vert1.addNeighborVert(vert2);
@@ -80,8 +94,7 @@ class Graph {
 	print() {
 		let resStr = '';
 		this.vertices.map(v => {
-			resStr += `vert: ${v.data}\n`;
-			resStr += `\tneighbors: ${v.neighbors.map(n => n.data)}\n`;
+			resStr += `${v.data}: ${v.neighbors.map(n => n.data).join(', ')}\n`;
 		});
 		console.log(resStr);
 	}
