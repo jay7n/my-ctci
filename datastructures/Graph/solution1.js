@@ -67,28 +67,21 @@ class Graph {
 	}
 
 	addOneWayEdge(vertFrom, vertTo) {
-		if (this.includeVert(vertFrom) && this.includeVert(vertTo)) {
-			vertFrom.addNeighborVert(vertTo);
-			return true;
-		}
-		return false;
+		vertFrom.addNeighborVert(vertTo);
 	}
 
 	addEdge(vert1, vert2) {
-		if (this.includeVert(vert1) && this.includeVert(vert2)) {
-			vert1.addNeighborVert(vert2);
-			vert2.addNeighborVert(vert1);
-			return true;
-		}
-		return false;
+		vert1.addNeighborVert(vert2);
+		vert2.addNeighborVert(vert1);
+	}
+
+	removeOneWayEdge(vertFrom, vertTo) {
+		return vertFrom.removeNeighborVert(vertTo);
 	}
 
 	removeEdge(vert1, vert2) {
-		if (this.includeVert(vert1) && this.includeVert(vert2)) {
-			vert1.removeNeighborVert(vert2);
-			vert2.removeNeighborVert(vert1);
-		}
-		return false;
+		vert1.removeNeighborVert(vert2);
+		vert2.removeNeighborVert(vert1);
 	}
 
 	print() {
