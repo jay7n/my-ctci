@@ -21,10 +21,10 @@ testWithSolution = function(title, Solution) {
 		g.addOneWayEdge(vs[5], vs[8]);
 		g.addOneWayEdge(vs[8], vs[9]);
 
-		let hasAPath = Solution(g, vs[0], vs[9]);
+		let hasAPath = Solution(vs[0], vs[9]);
 		expect(hasAPath).toBe(true);
 
-		hasAPath = Solution(g, vs[2], vs[9]);
+		hasAPath = Solution(vs[2], vs[9]);
 		expect(hasAPath).toBe(false);
 	});
 }
