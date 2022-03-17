@@ -1,7 +1,7 @@
 const testWithSolution = function(title, Solution) {
 	test(title + ': ' + 
 	'', function() {
-		const array = [-5, -3, -1, 0, 1, 2, 3, 10, 50];
+		const array = [1, 2, 3, 4, 5];
 		const bst = new Solution(array);
 		expect(bst.toArray()).toStrictEqual(array);
 		expect(bst.height).toBe(4);
