@@ -4,31 +4,64 @@ class TNode {
 	left;
 	right;
 
-	get height() {
-
+	get height() { // point1 - mind the way of solving the height
+		let leftHeight = 0;
+		if (this.left) {
+			leftHeight = this.left.height;
+		}
+		let rightHeight = 0;
+		if (this.right) {
+			rightHeight = this.right.height;
+		}
+		return Math.max(leftHeight, rightHeight) + 1;
 	}
 
-	inorderTraverse() {
+	inorderTraverse(cb) {
+		if (this.left) {
+			this.left.inorderTraverse(cb);
+		}
+		cb(this);
+		if (this.right) {
+			this.right.inorderTraverse(cb);
+		}
+	}
 
+	inorderTraverseToArray() {
+		let res = [];
+		this.inorderTraverse((nd) => {
+			res.push(nd.data);
+		});
+		return res;
 	}
 }
 
 class MinimalTree {
 	rootNode;
 	constructor(rawArray) {
-		this.rootNode = new TNode();
-		this._binaryTraverseArray(this.rootNode, rawArray, 0, rawArray.length - 1, (node, data) => {
-			node.data = data;
-			console.log(data);
-		});
+		if (rawArray == null || rawArray.length == 0) { // point2 - mind rawArray might be empty
+		} else {
+			this.rootNode = new TNode();
+			this._binaryTraverseArray(this.rootNode, rawArray, 0, rawArray.length - 1, (node, data) => {
+				node.data = data;
+			});
+		}
 	}
 
 	toArray() {
-		return this.rootNode.toArray();
+		if (this.rootNode) {
+			const res = this.rootNode.inorderTraverseToArray();
+			return res;
+		} else {
+			return [];
+		}
 	}
 
 	get height() {
-		return this.rootNode.height;
+		if (this.rootNode) {
+			return this.rootNode.height;
+		} else {
+			return 0;
+		}
 	}
 
 	_binaryTraverseArray(node, array, startIdx, endIdx, cb) {
