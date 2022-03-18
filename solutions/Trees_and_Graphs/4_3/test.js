@@ -23,12 +23,12 @@ const testWithSolution = function(title, solution) {
 		const n222 = n22.addRightChildByData(222);
 
 		const lists = solution(root);
-		expects(lists[0].toArray()).toStrictEqual([0]);
-		expects(lists[1].toArray()).toStrictEqual([1,2]);
-		expects(lists[2].toArray()).toStrictEqual([11,12,21,22]);
-		expects(lists[3].toArray()).toStrictEqual([111,112,121,122,211,212,221,222]);
+		expect(lists[0]).toStrictEqual([0]);
+		expect(lists[1]).toStrictEqual([1,2]);
+		expect(lists[2]).toStrictEqual([11,12,21,22]);
+		expect(lists[3]).toStrictEqual([111,112,121,122,211,212,221,222]);
 	});
 }
 
-const Solution = require('./solution1');
+const Solution = require('./solution1_killed_me');
 testWithSolution('Solution1', Solution);

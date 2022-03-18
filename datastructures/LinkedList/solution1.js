@@ -77,9 +77,9 @@ class LinkedList {
 	}
 
 	add(val) {
-		const newnode = new LinkedListNode();
-		newnode.data = val;
-		return this.addNode(newnode);
+		const newNode = new LinkedListNode();
+		newNode.data = val;
+		return this.addNode(newNode);
 	}
 
 	addNode(newnode) {
