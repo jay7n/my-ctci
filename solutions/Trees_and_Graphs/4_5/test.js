@@ -14,6 +14,28 @@ const testWithSolution = function(title, solution) {
 	});
 	test(title + ': ' +
 	'This tree is a BST', () => {
+		const n3 = new BinaryTreeNode(-3);
+		const n1 = n3.addLeftChildByData(-1);
+		const n2 = n1.addRightChildByData(-2);
+		const n5 = n3.addRightChildByData(-5);
+		const n4 = n5.addLeftChildByData(-4);
+
+		const isBST = solution(n3);
+		expect(isBST).toBe(true);
+	});
+	test(title + ': ' +
+	'This tree is a BST', () => {
+		const n3 = new BinaryTreeNode(3);
+		const n1 = n3.addLeftChildByData(5);
+		const n2 = n1.addRightChildByData(4);
+		const n5 = n3.addRightChildByData(1);
+		const n4 = n5.addLeftChildByData(2);
+
+		const isBST = solution(n3);
+		expect(isBST).toBe(true);
+	});
+	test(title + ': ' +
+	'This tree is a BST', () => {
 		const n3 = new BinaryTreeNode(3);
 		const n2 = n3.addLeftChildByData(2);
 		const n1 = n2.addLeftChildByData(1);
