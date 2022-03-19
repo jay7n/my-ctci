@@ -1,4 +1,4 @@
-const { LinkedList, LinkedListNode } = require('../../../datastructures/LinkedList/solution1');
+const { LinkedList } = require('../../../datastructures/LinkedList/solution1');
 
 module.exports = function ListOfDepths(rootTreeNode) {
 	if (rootTreeNode) {
