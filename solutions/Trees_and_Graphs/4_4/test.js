@@ -1,3 +1,5 @@
+const { BinaryTreeNode } = require('../../../datastructures/Tree/solution1');
+
 const testWithSolution = function(title, solution) {
 	test(title + ':' + 
 	'This tree is balanced', () => {
@@ -41,7 +43,7 @@ const testWithSolution = function(title, solution) {
 		// const n122 = n12.addRightChildByData(122);
 		const n211 = n21.addLeftChildByData(211);
 		// const n212 = n21.addRightChildByData(212);
-		const n221 = n22.addLeftChildByData(221);
+		// const n221 = n22.addLeftChildByData(221);
 		// const n222 = n22.addRightChildByData(222);
 
 		const treeIsBalanced = solution(root);
