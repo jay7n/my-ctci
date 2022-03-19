@@ -34,7 +34,7 @@ const testWithSolution = function(title, solution) {
 
 		const n11 = n1.addLeftChildByData(11);
 		const n12 = n1.addRightChildByData(12);
-		const n21 = n2.addLeftChildByData(21);
+		const n21 = n2.addLeftChildByData(21); // this node is not balanced
 		// const n22 = n2.addRightChildByData(22);
 
 		const n111 = n11.addLeftChildByData(111);
