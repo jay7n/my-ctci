@@ -43,6 +43,14 @@ class Stack {
 	toArray() {
 		return this.list.toArray();
 	}
+
+	popToArray() {
+		let res = [];
+		while(this.size() > 0) {
+			res.push(this.pop());
+		}
+		return res;
+	}
 }
 
 module.exports = {
