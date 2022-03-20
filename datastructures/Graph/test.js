@@ -39,6 +39,11 @@ const testWithSolution = function(title) {
 		vs[3].addNeighborVert(vs[4]);
 
 		graph.print();
+
+		expect(graph.getVertexByData('v5')).toBe(v5);
+		expect(graph.getVertextByCustomCb(v => {
+			return v.data === 'v3'
+		})).toBe(vs[3]);
 	}
 	);
 }

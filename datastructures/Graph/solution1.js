@@ -35,11 +35,12 @@ class Graph {
 
 	addVertex(vert) {
 		this.vertices.push(vert);
+		return vert;
 	}
 
 	addVertexByData(vertData) {
 		const vert = new GraphVertex(vertData);
-		this.addVertex(vert);
+		return this.addVertex(vert);
 	}
 
 	includeVert(vert) {
@@ -48,6 +49,10 @@ class Graph {
 
 	getVertexByData(vertData) {
 		return this.vertices.find(v => v.data === vertData);
+	}
+
+	getVertextByCustomCb(cb) {
+		return this.vertices.find(v => cb(v));
 	}
 
 	removeVertex(vert) {
