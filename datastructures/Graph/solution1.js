@@ -92,7 +92,7 @@ class Graph {
 	print() {
 		let resStr = '';
 		this.vertices.map(v => {
-			resStr += `${v.data}: ${v.neighbors.map(n => n.data).join(', ')}\n`;
+			resStr += `${JSON.stringify(v.data)}: ${v.neighbors.map(n => JSON.stringify(n.data)).join(', ')}\n`;
 		});
 		console.log(resStr);
 	}
