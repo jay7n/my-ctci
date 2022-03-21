@@ -15,13 +15,19 @@ const testWithSoution = function (title, solution) {
 		const n9 = n4.addLeftChildByData(9);
 		const n11 = n4.addRightChildByData(11);
 		const n12 = n7.addRightChildByData(12);
+		const nxx = new BinaryTreeNode(10);
 
 		expect(solution(n1, n5)).toBe(n3);
+		expect(solution(n1, n2)).toBe(n1);
+		expect(solution(n1, n1)).toBe(n1);
 		expect(solution(n8, n10)).toBe(n6);
 		expect(solution(n6, n10)).toBe(n6);
 		expect(solution(n10, n2)).toBe(n1);
 		expect(solution(n6, n5)).toBe(n3);
 		expect(solution(n8, n11)).toBe(n3);
+		expect(solution(n9, n12)).toBe(n5);
+
+		expect(solution(n6, nxx)).toBe(null);
 	});
 }
 
