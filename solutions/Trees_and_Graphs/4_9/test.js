@@ -6,7 +6,10 @@ const testWithSolution = function(title, solution) {
 		root.addLeftChildByData(1);
 		root.addLeftChildByData(3);
 
-		const allArrays = solution(root);
+		const allArrays = solution(root).map(arr => arr.join());
+		allArrays.includes('2,1,3');
+		allArrays.includes('2,3,1');
+
 	});
 }
 
