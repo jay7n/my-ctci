@@ -6,23 +6,6 @@ module.exports = class BSTSequences {
 		this.rootNode = tNode;
 	}
 
-	postOrderTraverse(tNode) {
-		if (tNode) {
-			if (tNode.left) {
-				postOrderTraverse(tNode.left);
-			}
-			if (tNode.right) {
-				postOrderTraverse(tNode.right);
-			}
-
-			if (tNode.left == null && tNode.right == null) { // this node is a leaf
-
-			} else {
-
-			}
-		}
-	}
-
 	getTNodeSeq(tNode) {
 		if (tNode) {
 			let resArrays = [];
@@ -54,7 +37,9 @@ module.exports = class BSTSequences {
 
 
 	getAllSequences() {
-
+		const res = this.getTNodeSeq(this.rootNode);
+		console.log('getAllSequences = ', res);
+		return res;
 	}
 
 }
