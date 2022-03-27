@@ -1,5 +1,12 @@
-module.exports = function BSTSequences(treeNode) {
-	function postOrderTraverse(tNode, cb) {
+
+module.exports = class BSTSequences {
+	rootNode;
+
+	constructor(rootNode) {
+		this.rootNode = tNode;
+	}
+
+	postOrderTraverse(tNode, cb) {
 		if (tNode) {
 			postOrderTraverse(tNode.left, cb);
 			postOrderTraverse(tNode.right, cb)
@@ -7,8 +14,13 @@ module.exports = function BSTSequences(treeNode) {
 		}
 	}
 
-	return [
-		[2,1,3],
-		[2,3,1],
-	]
+	static GetWeavedArrays(array1, array2) {
+
+	}
+
+
+	getAllSequences() {
+
+	}
+
 }
