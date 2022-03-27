@@ -28,8 +28,10 @@ module.exports = class BSTSequences {
 				resArrays.forEach(array => array.splice(0,0,tNode.data));
 			} else if (leftArrays) {
 				leftArrays.forEach(array => array.splice(0,0,tNode.data));
+				resArrays = leftArrays; // point1 - remember to assign resArrays!
 			} else if (rightArrays) {
 				rightArrays.forEach(array => array.splice(0,0,tNode.data));
+				resArrays = rightArrays; // point2 - remember to assign resArrays!
 			} else {
 				resArrays = [ [tNode.data] ];
 			}
@@ -42,15 +44,15 @@ module.exports = class BSTSequences {
 
 	getAllSequences() {
 		const res = this.getTNodeSeq(this.rootNode);
-		console.log('getAllSequences = ', res);
+		// console.log('getAllSequences = ', res);
 		return res;
 	}
 
 	static GetWeavedArrays(array1, array2) {
 		if (array1 == null || array1.length == 0) {
-			return [array2.slice()]; // point1 - should copy array, or else the original array would be modified at external level
+			return [array2.slice()]; // point2 - should copy array, or else the original array would be modified at external level
 		} else if (array2 == null || array2.length == 0) {
-			return [array1.slice()]; // point1 - should copy array, or else the original array would be modified at external level
+			return [array1.slice()]; // point2 - should copy array, or else the original array would be modified at external level
 		}
 
 		const array1Head = array1.splice(0,1)[0];

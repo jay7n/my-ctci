@@ -31,11 +31,18 @@ const testWithSolution = function(title, BSTSequences) {
 
 		const bstSeq = new BSTSequences(root);
 
-		const res = bstSeq.getTNodeSeq(root);
+		let res = bstSeq.getTNodeSeq(root);
 
-		const allArrays = res.map(arr => arr.join(', '));
-		allArrays.includes('2, 1, 3');
-		allArrays.includes('2, 3, 1');
+		let allArrays = res.map(arr => arr.join(', '));
+		expect(allArrays.includes('2, 1, 3')).toBe(true);
+		expect(allArrays.includes('2, 3, 1')).toBe(true);
+
+		res = bstSeq.getAllSequences();
+
+		allArrays = res.map(arr => arr.join(', '));
+		expect(allArrays.includes('2, 1, 3')).toBe(true);
+		expect(allArrays.includes('2, 3, 1')).toBe(true);
+
 	});
 
 	test(title + ': ' + 
