@@ -13,22 +13,29 @@ module.exports = class BSTSequences {
 			let leftArrays = this.getTNodeSeq(tNode.left);
 			let rightArrays = this.getTNodeSeq(tNode.right);
 
+			// console.log('tNode data = ', tNode.data);
+			// console.log('leftArrays = ', leftArrays);
+			// console.log('rightArrays = ', rightArrays);
+
 			if (leftArrays && rightArrays) {
 				for (const la of leftArrays) {
 					for (const ra of rightArrays) {
+						// console.log('la = ', la, 'ra = ', ra);
 						resArrays = resArrays.concat(BSTSequences.GetWeavedArrays(la, ra));
+						// console.log('in loop resArrays = ', resArrays);
 					}
 				}
-				resArrays = resArrays.map(array => array.splice(0,0,tNode.data));
+				resArrays.forEach(array => array.splice(0,0,tNode.data));
 			} else if (leftArrays) {
-				resArrays = leftArrays.map(array => array.splice(0,0,tNode.data));
+				leftArrays.forEach(array => array.splice(0,0,tNode.data));
 			} else if (rightArrays) {
-				resArrays = rightArrays.map(array => array.splice(0,0,tNode.data));
+				rightArrays.forEach(array => array.splice(0,0,tNode.data));
 			} else {
 				resArrays = [ [tNode.data] ];
 			}
 
-			console.log('resArrays = ', resArrays);
+			// console.log('resArrays = ', resArrays);
+			return resArrays;
 		}
 		return null;
 	}
