@@ -28,6 +28,10 @@ const testWithSolution = function(title, BinaryTreeNode) {
 		expect(root.right.right.data).toBe(22);
 		expect(root.left.right.left.data).toBe(121);
 		expect(root.right.left.right.data).toBe(212);
+
+		const array = root.preOrderDfsToArray(root);
+		console.log('array = ', array);
+		expect(array).toStrictEqual([0, 1, 11, 111, 112, 12, 121, 122, 2, 21, 211, 212, 22, 221, 222]);
 	});
 
 }

@@ -33,6 +33,15 @@ class BinaryTreeNode {
 		}
 		return node;
 	}
+
+	preOrderDfsToArray(node, array = []) {
+		if (node) {
+			array.push(node.data);
+			this.preOrderDfsToArray(node.left, array);
+			this.preOrderDfsToArray(node.right, array);
+		}
+		return array;
+	}
 }
 
 module.exports = {
