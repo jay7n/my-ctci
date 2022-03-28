@@ -1,4 +1,5 @@
 const { BinaryTreeNode } = require('../../../datastructures/Tree/solution1');
+
 const testWithSolution = function(title, BSTSequences) {
 	test(title + ': ' +
 	'test solution GetWeavedArrays', () => {
