@@ -3,16 +3,12 @@ class RandomNode {
   right;
   parent;
   data;
-  // leftCount;
-  // rightCount;
 
   constructor(data) {
     this.data = data;
-    // this.leftCount = 0;
-    // this.rightCount = 0;
   }
 
-  get count() {
+  get count() { // we can use a count() getter with a recursive counting call
     let res = 1;
     if (this.left) {
       res += this.left.count;
@@ -83,7 +79,20 @@ class RandomNode {
   }
 
   getRandomNode() {
+    const random = Math.ceil(Math.random() * this.count);
+    const leftCount = this.left ? this.left.count : 0;
+    const rightCount = this.right ? this.right.count : 0;
+    const count = leftCount + rightCount + 1;
+    // console.log('current node data = ', this.data, 'random = ', random);
+    // console.log('current count = ', count, 'left count = ', leftCount, 'right count = ', this.rightCount);
 
+    if (random >= 1 && random <= leftCount ) {
+      return this.left.getRandomNode();
+    } else if (random == leftCount + 1) {
+      return this;
+    } else if (random > leftCount + 1 && random <= count) {
+      return this.right.getRandomNode();
+    }
   }
 
 }
