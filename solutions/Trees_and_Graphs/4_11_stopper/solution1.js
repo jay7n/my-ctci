@@ -22,12 +22,35 @@ class RandomNode {
     }
   }
 
-  find() {
-
+  find(cb) {
+    let res;
+    const q = [this];
+    while(q.length > 0)  {
+      const node = q.splice(0, 1)[0];
+      if (cb(node)) {
+        res = node;
+        break;
+      }
+      if (node.left) {
+        q.push(node.left);
+      } else if (node.right) {
+        q.push(node.right);
+      }
+    }
+    return res;
   }
 
-  delete() {
-
+  delete(node) {
+    const nodeToDelete = this.find(elem => elem === node);
+    if (nodeToDelete) {
+      const parent = nodeToDelete.parent;
+      nodeToDelete.parent = null;
+      if (parent.left === nodeToDelete) {
+        parent.left = null;
+      } else {
+        parent.right = null;
+      }
+    }
   }
 
   getRandomNode() {
