@@ -3,29 +3,46 @@ class RandomNode {
   right;
   parent;
   data;
-  leftCount;
-  rightCount;
+  // leftCount;
+  // rightCount;
 
   constructor(data) {
     this.data = data;
-    this.leftCount = 0;
-    this.rightCount = 0;
+    // this.leftCount = 0;
+    // this.rightCount = 0;
   }
 
   get count() {
-    return this.leftCount + this.rightCount + 1;
+    let res = 1;
+    if (this.left) {
+      res += this.left.count;
+    }
+    if (this.right) {
+      res += this.right.count;
+    }
+    return res;
+  }
+
+  addLeftChildByData(data) {
+    const node = new RandomNode(data);
+    this.insert('left', node);
+    return node;
+  }
+
+  addRightChildByData(data) {
+    const node = new RandomNode(data);
+    this.insert('right', node);
+    return node;
   }
 
   insert(subBranchName, randomNode) {
     if (subBranchName == 'left') {
       this.left = randomNode;
       randomNode.parent = this;
-      this.leftCount = randomNode.count;
       return true;
     } else if (subBranchName == 'right') {
       this.right = randomNode;
       randomNode.parent = this;
-      this.rightCount = randomNode.count;
       return true;
     } else {
       return false;
@@ -43,7 +60,8 @@ class RandomNode {
       }
       if (node.left) {
         q.push(node.left);
-      } else if (node.right) {
+      } 
+      if (node.right) {
         q.push(node.right);
       }
     }
@@ -56,13 +74,12 @@ class RandomNode {
       const parent = nodeToDelete.parent;
       nodeToDelete.parent = null;
       if (parent.left === nodeToDelete) {
-        parent.leftCount = 0;
         parent.left = null;
       } else {
-        parent.rightCount = 0;
         parent.right = null;
       }
     }
+    return nodeToDelete;
   }
 
   getRandomNode() {
