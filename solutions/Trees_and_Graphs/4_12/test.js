@@ -3,6 +3,31 @@ const { BinaryTreeNode } = require('../../../datastructures/Tree/solution1');
 const testWithSolution = function(title, solution) {
   test(title + ': ' + 
   '', () => {
+    const n20 = new BinaryTreeNode(20);
+      const n10 = n20.addLeftChildByData(10);
+        const n15 = n10.addLeftChildByData(15);
+          const n5 = n15.addLeftChildByData(5);
+      const n3 = n20.addRightChildByData(3);
+        const n7 = n3.addLeftChildByData(7);
+
+    let paths = solution(n20, 30);
+    const correctAllPaths = [
+      '20->10',
+      '20->3->7',
+      '10->15->5',
+    ];
+    paths.forEach(path => {
+      expect(correctAllPaths.includes(path)).toBe(true);
+    });
+    expect(paths.length).toBe(3);
+
+    paths = solution(n20, 25);
+    expect(paths[0]).toBe('10->15');
+    expect(paths.length).toBe(1);
+
+    paths = solution(n20, 100);
+    expect(paths.length).toBe(0);
+
   });
 
   test(title + ': ' + 
@@ -20,7 +45,7 @@ const testWithSolution = function(title, solution) {
               const n15 = n2.addRightChildByData(15);
             const n17 = n3.addRightChildByData(17);
 
-    const { paths } = solution(n3, 3);
+    const paths = solution(n3, 30);
     
   });
 }
