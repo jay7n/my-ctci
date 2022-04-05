@@ -21,7 +21,6 @@ module.exports = function PathsWithSum(tNode, sum) {
       accSum += cur.data;
 
       if (accSum === sum) {
-        console.log('binggo', sum);
         break;
       }
 
@@ -38,7 +37,7 @@ module.exports = function PathsWithSum(tNode, sum) {
     return res.join('->');
   });
 
-  console.log('res = ', res);
+  // console.log('res = ', res);
 
   return res;
 
