@@ -37,15 +37,29 @@ const testWithSolution = function(title, solution) {
         const n10l2i0 = n20.addLeftChildByData(10);
         const n5 = n20.addRightChildByData(5);
           const n5l3 = n5.addLeftChildByData(5);
-        const n10l1 = n10l0.addRightChild(10);
-          const n10l2i1 = n10l1.addLeftChildByData(10);
-          const n3 = n10l1.addRightChildByData(3);
-            const n2 = n3.addLeftChildByData(2);
-              const n2l4 = n2.addLeftChildByData(2);
-              const n15 = n2.addRightChildByData(15);
-            const n17 = n3.addRightChildByData(17);
+      const n10l1 = n10l0.addRightChildByData(10);
+        const n10l2i1 = n10l1.addLeftChildByData(10);
+        const n3 = n10l1.addRightChildByData(3);
+          const n2 = n3.addLeftChildByData(2);
+            const n2l4 = n2.addLeftChildByData(2);
+            const n15 = n2.addRightChildByData(15);
+          const n17 = n3.addRightChildByData(17);
 
-    const paths = solution(n3, 30);
+    const paths = solution(n10l0, 30);
+    console.log('all paths = ', paths);
+
+    const correctAllPaths = [
+      '20->10',
+      '20->5->5',
+      '10->20',
+      '10->10->10',
+      '10->3->2->15',
+      '10->3->17'
+    ];
+    paths.forEach(path => {
+      expect(correctAllPaths.includes(path)).toBe(true);
+    });
+    expect(paths.length).toBe(6);
     
   });
 }
