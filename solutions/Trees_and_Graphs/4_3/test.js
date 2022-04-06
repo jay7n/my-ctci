@@ -27,8 +27,12 @@ const testWithSolution = function(title, solution) {
 		expect(lists[1]).toStrictEqual([1,2]);
 		expect(lists[2]).toStrictEqual([11,12,21,22]);
 		expect(lists[3]).toStrictEqual([111,112,121,122,211,212,221,222]);
+		expect(lists.length).toBe(4);
 	});
 }
 
-const Solution = require('./solution1_killed_me');
-testWithSolution('Solution1', Solution);
+const Solution1 = require('./solution1_killed_me');
+const Solution2 = require('./solution2');
+
+testWithSolution('Solution1', Solution1);
+testWithSolution('Solution1', Solution2);
