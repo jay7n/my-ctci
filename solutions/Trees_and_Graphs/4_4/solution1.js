@@ -5,20 +5,20 @@ module.exports = function CheckBalanced(treeNode) {
 			let rightRes = {height: 0, balanced: true};
 			let balanced = true;
 
-			if (tNode.left) {
+			if (balanced && tNode.left) {
 				leftRes = postOrderTraverse(tNode.left);
 				if (leftRes.balanced == false) {
 					balanced = false;
 				};
 			}
-			if (tNode.right) {
+			if (balanced && tNode.right) {
 				rightRes = postOrderTraverse(tNode.right);
 				if (rightRes.balanced == false) {
 					balanced = false;
 				};
 			}
 
-			if (Math.abs(leftRes.height - rightRes.height) > 1) {
+			if (balanced && Math.abs(leftRes.height - rightRes.height) > 1) {
 				// console.log('left node = ', tNode.left);
 				// console.log('right node = ', tNode.right);
 				balanced = false;
