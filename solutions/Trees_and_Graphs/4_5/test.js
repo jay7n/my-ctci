@@ -83,4 +83,6 @@ const testWithSolution = function(title, solution) {
 }
 
 const Solution1 = require('./solution1');
+const Solution2 = require('./solution2');
 testWithSolution('Solution1', Solution1);
+testWithSolution('Solution2', Solution2);
