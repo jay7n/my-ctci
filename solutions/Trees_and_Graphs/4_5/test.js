@@ -2,7 +2,7 @@ const { BinaryTreeNode } = require('../../../datastructures/Tree/solution1');
 
 const testWithSolution = function(title, solution) {
 	test(title + ': ' +
-	'This tree is a BST', () => {
+	'1. This tree is a BST', () => {
 		const n3 = new BinaryTreeNode(3);
 		const n1 = n3.addLeftChildByData(1);
 		const n2 = n1.addRightChildByData(2);
@@ -13,7 +13,7 @@ const testWithSolution = function(title, solution) {
 		expect(isBST).toBe(true);
 	});
 	test(title + ': ' +
-	'This tree is a BST', () => {
+	'2. This tree is a BST', () => {
 		const n3 = new BinaryTreeNode(-3);
 		const n1 = n3.addLeftChildByData(-1);
 		const n2 = n1.addRightChildByData(-2);
@@ -24,7 +24,7 @@ const testWithSolution = function(title, solution) {
 		expect(isBST).toBe(true);
 	});
 	test(title + ': ' +
-	'This tree is a BST', () => {
+	'3. This tree is a BST', () => {
 		const n3 = new BinaryTreeNode(3);
 		const n1 = n3.addLeftChildByData(5);
 		const n2 = n1.addRightChildByData(4);
@@ -35,7 +35,7 @@ const testWithSolution = function(title, solution) {
 		expect(isBST).toBe(true);
 	});
 	test(title + ': ' +
-	'This tree is a BST', () => {
+	'4. This tree is a BST', () => {
 		const n3 = new BinaryTreeNode(3);
 		const n2 = n3.addLeftChildByData(2);
 		const n1 = n2.addLeftChildByData(1);
@@ -46,7 +46,7 @@ const testWithSolution = function(title, solution) {
 		expect(isBST).toBe(true);
 	});
 	test(title + ': ' +
-	'This tree is a BST', () => {
+	'5. This tree is a BST', () => {
 		const n3 = new BinaryTreeNode(3);
 		const n2 = n3.addLeftChildByData(2);
 		const n1 = n2.addLeftChildByData(1);
@@ -57,7 +57,7 @@ const testWithSolution = function(title, solution) {
 		expect(isBST).toBe(true);
 	});
 	test(title + ': ' +
-	'This tree is not a BST', () => {
+	'6. This tree is not a BST', () => {
 		const root = new BinaryTreeNode(0);
 
 		const n1 = root.addLeftChildByData(1);
