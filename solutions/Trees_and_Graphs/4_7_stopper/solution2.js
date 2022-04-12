@@ -8,7 +8,8 @@ module.exports = function BuildOrder(input) {
   let finalRes = [];
   let curRes = [];
   do {
-    curRes = getNonIncomingDepNodesInGraph(pg);
+    curRes = getNonIncomingDepNodesInGraph(pg, finalRes);
+    console.log('curRes = ', curRes.map(n => n.name));
     cutOffDepOnNodes(curRes);
     finalRes = finalRes.concat(curRes);
   } while (curRes && curRes.length > 0);
@@ -26,20 +27,23 @@ function buildGraph(projects, dependencies) {
     const gNode = new ProjGraphNode(name);
     pg.addProjNode(gNode);
   });
-  dependencies.forEach(({onName, depName}) => {
+  console.log('dependencies = ', dependencies);
+  dependencies.forEach((kv) => {
+    const onName = Object.keys(kv)[0];
+    const depName = kv[onName];
     const onNode = pg.findNodeByName(onName);
     const depNode = pg.findNodeByName(depName);
-    if (onNode && depName) {
+    if (onNode && depNode) {
       pg.addDependency(depNode, onNode)
     }
   });
   return pg;
 }
 
-function getNonIncomingDepNodesInGraph(projGraph) {
+function getNonIncomingDepNodesInGraph(projGraph, maskedNodes) {
   const res = [];
   for (const node of projGraph.nodes) {
-    if (node.meDeps.length == 0) {
+    if (node.meDeps.length == 0 && !maskedNodes.includes(node)) {
       res.push(node);
     }
   }
