@@ -1,5 +1,3 @@
-const { Graph } = require('../../../datastructures/Graph/solution1');
-
 module.exports = function BuildOrder(input) {
   let {projects, dependencies} = input || {};
 	if (projects == null || projects.length == 0) {
@@ -7,7 +5,19 @@ module.exports = function BuildOrder(input) {
 	}
 
   const pg = buildGraph(projects, dependencies);
+  let finalRes = [];
+  let curRes = [];
+  do {
+    curRes = getNonIncomingDepNodesInGraph(pg);
+    cutOffDepOnNodes(curRes);
+    finalRes = finalRes.concat(curRes);
+  } while (curRes && curRes.length > 0);
 
+  finalRes = finalRes.map(node => node.name);
+
+  console.log('finalRes = ', finalRes);
+
+  return finalRes;
 }
 
 function buildGraph(projects, dependencies) {
@@ -24,14 +34,30 @@ function buildGraph(projects, dependencies) {
   return pg;
 }
 
+function getNonIncomingDepNodesInGraph(projGraph) {
+  const res = [];
+  for (const node of projGraph.nodes) {
+    if (node.meDeps.length == 0) {
+      res.push(node);
+    }
+  }
+  return res;
+}
+
+function cutOffDepOnNodes(nodes) {
+  for (const node of nodes) {
+    node.removeAllMyDependencies();
+  }
+}
+
 
 class ProjGraph {
   nodes;
-  nodesMap;
+  // nodesMap;
   
   constructor() {
     this.nodes = [];
-    this.nodesMap = {};
+    // this.nodesMap = {};
   }
 
   addProjNode(gNode) {
@@ -46,17 +72,42 @@ class ProjGraph {
 
 class ProjGraphNode {
   name;
-  deps; // list of dependencies on me
-  depsMap;
+
+  depsOnMe; // list of dependencies on me
+  // depsOnMeMap;
+
+  meDeps; // list of dependencies on which me depend
 
   constructor(name) {
     this.name = name;
-    this.deps = [];
-    this.depsMap = {};
+    this.depsOnMe = [];
+    // this.depsOnMeMap = {};
+    this.meDeps = [];
   }
 
   addDependencyOnMe(gNode) {
-    this.deps.push(gNode);
-    this.depsMap[gNode.name] = gNode;
+    this.depsOnMe.push(gNode);
+    gNode.meDeps.push(this);
+    // this.depsOnMeMap[gNode.name] = gNode;
   }
+
+  removeAllMyDependencies() {
+    for (const node of this.depsOnMe) {
+      const idx = node.meDeps.findIndex(d => d.name == this.name);
+      if (idx !== -1) {
+        node.meDeps.splice(idx, 1);
+      }
+    }
+    this.depsOnMe = [];
+  }
+
+  // removeDependencyOnMe(gNode) {
+  //   const idx1 = this.depsOnMe.findIndex(d => d.name == gNode.name);
+  //   if (idx1 !== -1) {
+  //     this.depsOnMe.splice(idx1, 1);
+  //     const idx2 = gNode.meDeps.findIndex(d => d.name == this.name);
+  //     gNode.meDeps.splice(idx2, 1);
+  //     // delete this.depsOnMeMap[gNode.name];
+  //   }
+  // }
 }
