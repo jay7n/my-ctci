@@ -27,9 +27,11 @@ function buildGraph(projects, dependencies) {
     pg.addProjNode(gNode);
   });
   dependencies.forEach(({onName, depName}) => {
-    const onNode = pg.depsMap[onName];
-    const depNode = pg.depsMap[depName];
-    pg.addDependency(depNode, onNode)
+    const onNode = pg.findNodeByName(onName);
+    const depNode = pg.findNodeByName(depName);
+    if (onNode && depName) {
+      pg.addDependency(depNode, onNode)
+    }
   });
   return pg;
 }
@@ -60,9 +62,13 @@ class ProjGraph {
     // this.nodesMap = {};
   }
 
+  findNodeByName(name) {
+    return this.nodes.find(node => node.name == name);
+  }
+
   addProjNode(gNode) {
     this.nodes.push(gNode);
-    this.nodesMap[gNode.name] = gNode;
+    // this.nodesMap[gNode.name] = gNode;
   }
 
   addDependency(depNode, onNode) {
