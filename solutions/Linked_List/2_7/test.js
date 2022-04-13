@@ -67,5 +67,7 @@ const testWitSolution = function(title, solution) {
 
 const Solution1 = require('./solution1');
 const Solution2 = require('./solution2');
+const Solution3 = require('./solution2');
 testWitSolution('Solution1', Solution1);
 testWitSolution('Solution2', Solution2);
+testWitSolution('Solution3', Solution3);
