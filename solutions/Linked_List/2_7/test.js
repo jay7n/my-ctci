@@ -16,22 +16,22 @@ const testWitSolution = function(title, solution) {
 		expect(intersectedNode).toBe(node);
 	});
 
-  test(title + ': ' +
-	'linkedList{1,a,2,3,4} and {9,8,a, 7, 6} have intersection with node a', () => {
-		const linkedLis1 = new LinkedList([1]);
-		const linkedList2 = new LinkedList([9, 8]);
-		const node = new LinkedListNode('a');
-		linkedLis1.addNode(node);
-		linkedList2.addNode(node);
-		linkedLis1.add(2);
-		linkedLis1.add(3);
-		linkedLis1.add(4);
-    linkedList2.add(7);
-    linkedList2.add(6);
+  // test(title + ': ' +
+	// 'linkedList{1,a,2,3,4} and {9,8,a, 7, 6} have intersection with node a', () => {
+	// 	const linkedLis1 = new LinkedList([1]);
+	// 	const linkedList2 = new LinkedList([9, 8]);
+	// 	const node = new LinkedListNode('a');
+	// 	linkedLis1.addNode(node);
+	// 	linkedList2.addNode(node);
+	// 	linkedLis1.add(2);
+	// 	linkedLis1.add(3);
+	// 	linkedLis1.add(4);
+  //   linkedList2.add(7);
+  //   linkedList2.add(6);
 
-		const intersectedNode = solution(linkedLis1, linkedList2);
-		expect(intersectedNode).toBe(node);
-	});
+	// 	const intersectedNode = solution(linkedLis1, linkedList2);
+	// 	expect(intersectedNode).toBe(node);
+	// });
 
 	test(title + ': ' +
 	'linkedList{1,2,3,4,5,9} and {9} have intersection with node 9', () => {

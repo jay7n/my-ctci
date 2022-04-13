@@ -13,6 +13,8 @@ module.exports = function Intersection(linkedList1, linkedList2) {
 	do {
 		const {value:node1, done: d1} = recur1.next();
 		const {value:node2, done: d2} = recur2.next();
+    console.log('node1 = ', node1.data);
+    console.log('node2 = ', node2.data);
 		done1 = d1;
 		done2 = d2;
 		if (node1 === node2 && node1 != null) { // point2 - remember to check the condition of ndoe != null
