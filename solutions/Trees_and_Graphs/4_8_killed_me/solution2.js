@@ -14,19 +14,30 @@ module.exports = function CommonAncestor(treeNode1, treeNode2) {
 
   // now the two nodes are same high
   let cur1 = treeNode1;
-  let cur2 = treeNode1;
+  let cur2 = treeNode2;
   while (cur1 !== cur2 && cur1 !== null) {
     cur1 = cur1.parent;
     cur2 = cur2.parent;
   }
 
+  cur1 = cur1 ? cur1 : null;
+
   return cur1; // or cur2 is okay
 }
 
 function getDepthFromRoot(tNode) {
-
+  let count = 0;
+  while(tNode) {
+    count++;
+    tNode = tNode.parent;
+  }
+  return count;
 }
 
 function goUpLevels(tNode, levelNum) {
-
+  let cur = tNode;
+  for (let i = 0; i < levelNum && cur; i++) {
+    cur = cur.parent;
+  }
+  return cur;
 }
