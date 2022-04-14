@@ -31,7 +31,7 @@ module.exports = function CommonAncestor(treeNode1, treeNode2) {
 		return treeNode1;
 	}
 	if (findInNode(treeNode2, treeNode1)) {
-		return treeNode1;
+		return treeNode2;
 	}
 
 	let cur1 = getSiblingNode(treeNode1);
