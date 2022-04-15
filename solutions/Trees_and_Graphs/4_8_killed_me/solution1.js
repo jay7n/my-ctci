@@ -1,4 +1,4 @@
-module.exports = function CommonAncestor(treeNode1, treeNode2) {
+module.exports = function CommonAncestor(rootNode, treeNode1, treeNode2) {
 	function findInNode(inTNode, tNodeToFind) {
 		if (inTNode) {
 			if (inTNode == tNodeToFind) {

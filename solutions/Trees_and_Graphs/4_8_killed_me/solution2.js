@@ -1,6 +1,6 @@
 // This is the same algorithm as 2_7 solution2
 
-module.exports = function CommonAncestor(treeNode1, treeNode2) {
+module.exports = function CommonAncestor(rootNode, treeNode1, treeNode2) {
   // get their own depths counting from the root
   const d1 = getDepthFromRoot(treeNode1);
   const d2 = getDepthFromRoot(treeNode2);
