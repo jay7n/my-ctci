@@ -27,7 +27,7 @@ const testWithSoution = function (title, solution) {
 		expect(solution(n3, n8, n11)).toBe(n3);
 		expect(solution(n3, n9, n12)).toBe(n5);
 
-		expect(solution(n6, nxx)).toBe(null);
+		expect(solution(n3, n6, nxx)).toBe(null);
 	});
 }
 
