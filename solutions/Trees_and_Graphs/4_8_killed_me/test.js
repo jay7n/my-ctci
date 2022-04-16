@@ -34,6 +34,8 @@ const testWithSoution = function (title, solution) {
 const Solution1 = require('./solution1');
 const Solution2 = require('./solution2');
 const Solution3 = require('./solution3');
+const Solution4 = require('./solution3');
 testWithSoution('Solution1', Solution1);
 testWithSoution('Solution2', Solution2);
 testWithSoution('Solution3', Solution3);
+testWithSoution('Solution4', Solution4);
