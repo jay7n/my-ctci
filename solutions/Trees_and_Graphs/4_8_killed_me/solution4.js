@@ -30,10 +30,8 @@ function doCommonAncestor(rootNode, treeNode1, treeNode2) {
     if (res1.enumFlag == ResEnum.None && res2.enumFlag == ResEnum.None) {
     // at this point neither left or right child is the common ancestor
     // first we check the case where none of children has t1 or t2
-      if (rootNode === treeNode1) {
-        return new Res(rootNode, ResEnum.OnlyT1);
-      } else if (rootNode === treeNode2) {
-        return new Res(rootNode, ResEnum.OnlyT2);
+      if (rootNode === treeNode1 || rootNode === treeNode2) {
+        return new Res(rootNode, ResEnum.OnlyOneT);
       } else {
         return new Res(rootNode, ResEnum.None);
       }
@@ -41,12 +39,12 @@ function doCommonAncestor(rootNode, treeNode1, treeNode2) {
     } else if (res1.enumFlag == ResEnum.None || res2.enumFlag == ResEnum.None) {
     // or at this point there's exactly only one child containing one t1 or t2
     // and we need to check rootNode itself then
-      if (rootNode === treeNode1 && [res1.enumFlag, res2.enumFlag].includes(ResEnum.OnlyT2)) {
-        return new Res(rootNode, ResEnum.Both);
-      } else if (rootNode === treeNode2 && [res1.enumFlag, res2.enumFlag].includes(ResEnum.OnlyT1)) {
+      if ((rootNode === treeNode1 || rootNode === treeNode2) && 
+          [res1.enumFlag, res2.enumFlag].includes(ResEnum.OnlyOneT)) 
+      {
         return new Res(rootNode, ResEnum.Both);
       } else {
-        console.error('there must be wrong somewhere', '\n\t', rootNode.data, '\n\t', treeNode1.data, '\n\t', treeNode2.data);
+        return new Res(rootNode, ResEnum.OnlyOneT);
       }
 
     } else {
@@ -62,8 +60,7 @@ function doCommonAncestor(rootNode, treeNode1, treeNode2) {
 
 const ResEnum = {
   None: 'None',
-  OnlyT1: 'OnlyT1',
-  OnlyT2: 'OnlyT2',
+  OnlyOneT: 'OnlyOneT',
   Both: 'Both'
 }
 

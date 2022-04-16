@@ -17,7 +17,7 @@ const testWithSoution = function (title, solution) {
 		const n12 = n7.addRightChildByData(12);
 		const nxx = new BinaryTreeNode(10);
 
-		// expect(solution(n3, n1, n5)).toBe(n3);
+		expect(solution(n3, n1, n5)).toBe(n3);
 		expect(solution(n3, n1, n2)).toBe(n1);
 		expect(solution(n3, n1, n1)).toBe(n1);
 		expect(solution(n3, n8, n10)).toBe(n6);
