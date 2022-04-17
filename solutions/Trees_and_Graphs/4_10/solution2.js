@@ -6,3 +6,19 @@
 module.exports = function CheckSubTree(T2, T1) {
 
 }
+
+function treeToString(tNode) {
+  let strArray = [];
+  withNullPreOrderDFSTraverse(tNode, (n) => {
+    if (n == null) n = 'X';
+    else n = n.data;
+    strArray.push(n);
+  });
+  return strArray.join();
+}
+
+function withNullPreOrderDFSTraverse(tNode, cb) {
+  cb(tNode);
+  withNullPreOrderDFSTraverse(tNode.left, cb);
+  withNullPreOrderDFSTraverse(tNode.right, cb);
+}
