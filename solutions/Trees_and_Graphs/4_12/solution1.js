@@ -38,7 +38,8 @@ module.exports = function PathsWithSum(tNode, sum) {
   });
 
   // console.log('res = ', res);
-
-  return res;
-
+  return {
+    paths: res,
+    totalPathCount: res.length
+  }
 }

@@ -10,24 +10,27 @@ const testWithSolution = function(title, solution) {
       const n3 = n20.addRightChildByData(3);
         const n7 = n3.addLeftChildByData(7);
 
-    let paths = solution(n20, 30);
+    let pathsRes = solution(n20, 30);
     const correctAllPaths = [
       '20->10',
       '20->3->7',
       '10->15->5',
     ];
-    paths.forEach(path => {
-      expect(correctAllPaths.includes(path)).toBe(true);
-    });
-    expect(paths.length).toBe(3);
+    if (pathsRes.paths) {
+      pathsRes.paths.forEach(path => {
+        expect(correctAllPaths.includes(path)).toBe(true);
+      });
+    }
+    expect(pathsRes.totalPathCount).toBe(3);
 
-    paths = solution(n20, 25);
-    expect(paths[0]).toBe('10->15');
-    expect(paths.length).toBe(1);
+    pathsRes = solution(n20, 25);
+    if (pathsRes.paths) {
+      expect(pathsRes.paths[0]).toBe('10->15');
+    }
+    expect(pathsRes.totalPathCount).toBe(1);
 
-    paths = solution(n20, 100);
-    expect(paths.length).toBe(0);
-
+    pathsRes = solution(n20, 100);
+    expect(pathsRes.totalPathCount).toBe(0);
   });
 
   test(title + ': ' + 
@@ -45,8 +48,8 @@ const testWithSolution = function(title, solution) {
             const n15 = n2.addRightChildByData(15);
           const n17 = n3.addRightChildByData(17);
 
-    const paths = solution(n10l0, 30);
-    console.log('all paths = ', paths);
+    const pathsRes = solution(n10l0, 30);
+    console.log('pathsRes = ', pathsRes);
 
     const correctAllPaths = [
       '20->10',
@@ -56,15 +59,19 @@ const testWithSolution = function(title, solution) {
       '10->3->2->15',
       '10->3->17'
     ];
-    paths.forEach(path => {
-      expect(correctAllPaths.includes(path)).toBe(true);
-    });
-    expect(paths.length).toBe(6);
+
+    if (pathsRes.paths) {
+      pathsRes.paths.forEach(path => {
+        expect(correctAllPaths.includes(path)).toBe(true);
+      });
+    }
+    expect(pathsRes.totalPathCount).toBe(6);
     
   });
 }
 
 const Solution1 = require('./solution1');
-const Solution2 = require('./solution2');
 testWithSolution('Solution1', Solution1);
-testWithSolution('Solution2', Solution2);
+
+// const Solution2 = require('./solution2');
+// testWithSolution('Solution2', Solution2);
