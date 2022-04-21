@@ -1,5 +1,5 @@
 module.exports = {
-  printBits(num) {
+  printIn4Bits(num) {
 
   }
 }
