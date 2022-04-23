@@ -53,9 +53,32 @@ module.exports = {
 
   printNumAsNBitWithNegative(num, n = 4) {
     let res = this.printNumAsNBitWithPositive(Math.abs(num));
-    // res..splice(0, 1);
+    res.splice(0, 1);
 
-    res
+    // flip each bit
+    res = res.map(elm => elm === 0 ? 1 : 0);
 
+    // add 1 then
+    let idx = res.length - 1;
+    res[idx] += 1;
+    if (res[idx] == 2) {
+      res[idx] = 0;
+      let carry = 1;
+      while (--idx >= 0) {
+        res[idx] = res[idx] + carry;
+        if (res[idx] == 2) {
+          res[idx] = 0;
+          carry = 1;
+        } else {
+          break;
+        }
+      }
+    }
+
+    // add neg sign at start bit
+    res.splice(0, 0, '1');
+
+    console.log('neg res = ', res);
+    return res;
   }
 }
