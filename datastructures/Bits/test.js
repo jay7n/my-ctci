@@ -31,7 +31,8 @@ const testWithSolution = function(title) {
     expect(Bits.printNumAsNBits(7, 32)).toBe('0000 0000 0000 0000 0000 0000 0000 0111');
   });
 
-  'test printNumAsNBits with positive numbers', () => {
+  'test printNumAsNBits with negative numbers', () => {
+    expect(Bits.printNumAsNBits(-1)).toBe('1111');
   }
 }
 
