@@ -10,6 +10,8 @@ module.exports = {
     let remainder;
 
     if (num > 0) {
+    // for positive numbers
+
       while (quotient > 0) {
         remainder = quotient % 2;
         quotient = Math.floor(quotient / 2);
@@ -29,8 +31,19 @@ module.exports = {
         res = res.splice(res.length - n, num);
       }
 
+      let idx = res.length;
+      while (idx-4 > 0) {
+        idx -= 4;
+        res.splice(idx, 0, ' ');
+      }
+
       // console.log('res = ', res.join(''));
       return res.join('');
+
+    } else {
+    // for negative numbers
+
+
     }
   }
 }

@@ -2,7 +2,7 @@ const Bits = require('./solution1');
 
 const testWithSolution = function(title) {
   test(title + ': ' +
-  'test printNumAsNBits', () => {
+  'test printNumAsNBits with positive numbers', () => {
     expect(Bits.printNumAsNBits(0)).toBe('0000');
     expect(Bits.printNumAsNBits(1)).toBe('0001');
     expect(Bits.printNumAsNBits(1, 4)).toBe('0001');
@@ -24,10 +24,15 @@ const testWithSolution = function(title) {
     expect(Bits.printNumAsNBits(16, 4)).toBe('0000');
     expect(Bits.printNumAsNBits(17, 4)).toBe('0001');
 
-    expect(Bits.printNumAsNBits(16, 5)).toBe('10000');
-    expect(Bits.printNumAsNBits(17, 5)).toBe('10001');
+    expect(Bits.printNumAsNBits(16, 5)).toBe('1 0000');
+    expect(Bits.printNumAsNBits(17, 5)).toBe('1 0001');
 
+    expect(Bits.printNumAsNBits(7, 8)).toBe('0000 0111');
+    expect(Bits.printNumAsNBits(7, 32)).toBe('0000 0000 0000 0000 0000 0000 0000 0111');
   });
+
+  'test printNumAsNBits with positive numbers', () => {
+  }
 }
 
 testWithSolution();
