@@ -89,10 +89,16 @@ module.exports = {
       return null;
     }
 
-    if (bitArray[0] === 0) {
+    const headBit = bitArray.splice(0, 1)[0];
+
+    if (headBit === 0) {
       res = this.printBitsAsNumWithPositive(bitArray);
     } else {
       res = this.printBitsAsNumWithNegative(bitArray);
+    }
+
+    if (headBit === 1) {
+      res = -res;
     }
 
     return res;
@@ -123,8 +129,6 @@ module.exports = {
         break;
       }
     }
-
-    console.log('fuck array = ', bitArray);
 
     res = this.printBitsAsNumWithPositive(bitArray);
     return res;

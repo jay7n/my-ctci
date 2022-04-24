@@ -38,20 +38,32 @@ const testWithSolution = function(title) {
 
   test(title + ': ' +
   'test printNBitsAsNum with positive numbers', () => {
-    expect(Bits.printNBitsAsNum('0000')).toBe(0);
-    expect(Bits.printNBitsAsNum('0001')).toBe(1);
-    expect(Bits.printNBitsAsNum('0010')).toBe(2);
-    expect(Bits.printNBitsAsNum('0011')).toBe(3);
-    expect(Bits.printNBitsAsNum('0100')).toBe(4);
+    expect(Bits.printBitsAsNum('0000')).toBe(0);
+    expect(Bits.printBitsAsNum('0001')).toBe(1);
+    expect(Bits.printBitsAsNum('0010')).toBe(2);
+    expect(Bits.printBitsAsNum('0011')).toBe(3);
+    expect(Bits.printBitsAsNum('0100')).toBe(4);
   });
 
   test(title + ': ' +
   'test printNBitsAsNum with negative numbers', () => {
-    expect(Bits.printNBitsAsNum('1000')).toBe(0);
-    expect(Bits.printNBitsAsNum('1001')).toBe(1);
-    expect(Bits.printNBitsAsNum('1010')).toBe(2);
-    expect(Bits.printNBitsAsNum('1011')).toBe(3);
-    expect(Bits.printNBitsAsNum('1100')).toBe(4);
+    expect(Bits.printBitsAsNum('1000')).toBe(-0);
+    expect(Bits.printBitsAsNum('1001')).toBe(-7);
+    expect(Bits.printBitsAsNum('1010')).toBe(-6);
+    expect(Bits.printBitsAsNum('1011')).toBe(-5);
+    expect(Bits.printBitsAsNum('1100')).toBe(-4);
+    expect(Bits.printBitsAsNum('1101')).toBe(-3);
+    expect(Bits.printBitsAsNum('1110')).toBe(-2);
+    expect(Bits.printBitsAsNum('1111')).toBe(-1);
+  });
+
+  test(title + ': ' +
+  'test both sides', () => {
+    expect(Bits.printBitsAsNum(Bits.printNumAsNBits(0, 4))).toBe(0);
+    expect(Bits.printBitsAsNum(Bits.printNumAsNBits(1, 4))).toBe(1);
+    expect(Bits.printBitsAsNum(Bits.printNumAsNBits(2, 4))).toBe(2);
+    expect(Bits.printBitsAsNum(Bits.printNumAsNBits(3, 4))).toBe(3);
+    expect(Bits.printBitsAsNum(Bits.printNumAsNBits(4, 4))).toBe(4);
   });
 
 }
