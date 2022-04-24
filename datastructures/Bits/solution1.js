@@ -80,5 +80,34 @@ module.exports = {
 
     console.log('neg res = ', res);
     return res;
+  },
+
+  printNBitsAsNum(bitStr, n) {
+    let res;
+    const bitArray = bitStr.split('').map(elm => parseInt(elm));
+    if (bitArray.filter(elm => elm > 1).length > 0) {
+      return null;
+    }
+
+    if (n == null) n = bitArray.length;
+
+    if (bitArray[0] === 0) {
+      res = this.printNumAsNBitWithPositive(bitArray, n);
+    } else {
+      res = this.printNumAsNBitWithNegative(bitArray, n);
+    }
+
+    return res;
+  },
+
+  printNBitsAsNumWithPositive(bitArray) {
+    let res = 0;
+    for (let i = bitStr.length - 1; i >= 0; i--) {
+      bit
+    }
+  },
+
+  printNBitsAsNumWithNegative(bitArray) {
+
   }
 }
