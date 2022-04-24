@@ -35,6 +35,25 @@ const testWithSolution = function(title) {
   'test printNumAsNBits with negative numbers', () => {
     expect(Bits.printNumAsNBits(-1)).toBe('1111');
   });
+
+  test(title + ': ' +
+  'test printNBitsAsNum with positive numbers', () => {
+    expect(Bits.printNBitsAsNum('0000')).toBe(0);
+    expect(Bits.printNBitsAsNum('0001')).toBe(1);
+    expect(Bits.printNBitsAsNum('0010')).toBe(2);
+    expect(Bits.printNBitsAsNum('0011')).toBe(3);
+    expect(Bits.printNBitsAsNum('0100')).toBe(4);
+  });
+
+  test(title + ': ' +
+  'test printNBitsAsNum with negative numbers', () => {
+    expect(Bits.printNBitsAsNum('1000')).toBe(0);
+    expect(Bits.printNBitsAsNum('1001')).toBe(1);
+    expect(Bits.printNBitsAsNum('1010')).toBe(2);
+    expect(Bits.printNBitsAsNum('1011')).toBe(3);
+    expect(Bits.printNBitsAsNum('1100')).toBe(4);
+  });
+
 }
 
 testWithSolution();

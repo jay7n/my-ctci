@@ -82,32 +82,51 @@ module.exports = {
     return res;
   },
 
-  printNBitsAsNum(bitStr, n) {
+  printBitsAsNum(bitStr) {
     let res;
     const bitArray = bitStr.split('').map(elm => parseInt(elm));
     if (bitArray.filter(elm => elm > 1).length > 0) {
       return null;
     }
 
-    if (n == null) n = bitArray.length;
-
     if (bitArray[0] === 0) {
-      res = this.printNumAsNBitWithPositive(bitArray, n);
+      res = this.printBitsAsNumWithPositive(bitArray);
     } else {
-      res = this.printNumAsNBitWithNegative(bitArray, n);
+      res = this.printBitsAsNumWithNegative(bitArray);
     }
 
     return res;
   },
 
-  printNBitsAsNumWithPositive(bitArray) {
+  printBitsAsNumWithPositive(bitArray) {
     let res = 0;
-    for (let i = bitStr.length - 1; i >= 0; i--) {
-      bit
+    for (let i = bitArray.length - 1; i >= 0; i--) {
+      const val = bitArray[i];
+      if (val === 1) {
+        const bitIndex = bitArray.length - i - 1;
+        res += Math.pow(2, bitIndex);
+      }
     }
+    return res;
   },
 
-  printNBitsAsNumWithNegative(bitArray) {
+  printBitsAsNumWithNegative(bitArray) {
+    bitArray = bitArray.map(elm => elm === 0 ? 1 : 0);
 
+    let res = 0;
+    let carry = 1;
+    for (let i = bitArray.length - 1; i >= 0; i--) {
+      if (bitArray[i] + carry > 1) {
+        bitArray[i] = 0;
+      } else {
+        bitArray[i] = 1;
+        break;
+      }
+    }
+
+    console.log('fuck array = ', bitArray);
+
+    res = this.printBitsAsNumWithPositive(bitArray);
+    return res;
   }
 }
