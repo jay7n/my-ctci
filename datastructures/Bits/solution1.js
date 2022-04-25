@@ -78,7 +78,7 @@ module.exports = {
     // add neg sign at start bit
     res.splice(0, 0, '1');
 
-    console.log('neg res = ', res);
+    // console.log('neg res = ', res);
     return res;
   },
 
