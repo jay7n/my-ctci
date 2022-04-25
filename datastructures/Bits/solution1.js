@@ -24,6 +24,33 @@ module.exports = {
     return res.join('');
   },
 
+  printNumAsUnsignedBits(num, n = 4) {
+    let st = new Stack;
+    let quotient = num;
+    let remainder;
+
+    while (Math.abs(quotient) > 0) {
+      remainder = quotient % 2;
+      quotient = Math.floor(quotient / 2);
+      // console.log('q = ', quotient, 'r = ', remainder);
+      st.push(remainder);
+    }
+
+    let extraDigits = n - st.listSize;
+    while (extraDigits > 0) {
+      st.push(0);
+      extraDigits--;
+    }
+
+    let res = st.popToArray();
+
+    if (res.length - n > 0) {
+      res = res.splice(res.length - n, num);
+    }
+
+    return res;
+  },
+
   printNumAsNBitWithPositive(num, n = 4) {
     let st = new Stack;
     let quotient = num;
@@ -104,11 +131,15 @@ module.exports = {
     return res;
   },
 
+  printBitsAsUnsignedNum(bitArray) {
+    return this.printBitsAsNumWithPositive(bitArray);
+  },
+
   printBitsAsNumWithPositive(bitArray) {
     let res = 0;
     for (let i = bitArray.length - 1; i >= 0; i--) {
       const val = bitArray[i];
-      if (val === 1) {
+      if (val === 1 || val === '1') {
         const bitIndex = bitArray.length - i - 1;
         res += Math.pow(2, bitIndex);
       }
