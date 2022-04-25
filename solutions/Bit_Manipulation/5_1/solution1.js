@@ -9,13 +9,13 @@ module.exports = function Insertion(N, M, i, j) {
   console.log('N_cleared = ', N_cleared, Bits.printNumAsUnsignedBits(N_cleared, 32).join());
 
   const M_shifted = M << i;
-  console.log('fuck = ', M);
-  console.log('M = ', M, Bits.printNumAsUnsignedBits(M, 32)).join();
-  console.log('M_shifted = ', M_shifted, Bits.printNumAsUnsignedBits(M_shifted, 32)).join();
+  console.log('M = ', M, Bits.printNumAsUnsignedBits(M, 32).join());
+  console.log('M_shifted = ', M_shifted, Bits.printNumAsUnsignedBits(M_shifted, 32).join());
 
   const res = M_shifted | N_cleared;
-  console.log('res = ', res);
-  // console.log('res = ', Bits.printNumAsNBitWithPositive(res, 32).join());
+  console.log('res = ', res, Bits.printNumAsNBitWithPositive(res, 32).join());
+
+  return res;
 }
 
 function makeMaskV1(i, j) {

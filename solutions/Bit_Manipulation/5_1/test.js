@@ -13,6 +13,7 @@ const testWithSolution = function(title, solution) {
 
     const res = solution(N, M, i, j);
     expect(res).toBe(expected);
+
   });
 }
 
