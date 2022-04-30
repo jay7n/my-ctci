@@ -1,8 +1,8 @@
 module.exports = function BinaryToString(numVal) {
   let res = [];
   let cur = numVal;
+  let error = false;
   while (cur > 0) {
-    // console.log('cur = ', cur);
     let elm = 0;
     cur = cur * 2;
     if (cur >= 1) {
@@ -10,7 +10,16 @@ module.exports = function BinaryToString(numVal) {
       cur -= 1;
     }
     res.push(elm);
+
+    if (res.length > 32) {
+      error = true;
+      break;
+    }
   }
-  // console.log('res = ', res);
-  return res.join('');
+  // console.log('numVal = ', numVal, 'resStr = ', res.join(''));
+  if (error) {
+    return 'ERROR';
+  } else {
+    return res.join('');
+  }
 }
