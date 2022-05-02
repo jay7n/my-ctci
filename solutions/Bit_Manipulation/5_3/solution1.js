@@ -1,7 +1,7 @@
 const Bits = require('../../../datastructures/Bits/solution1');
 module.exports = function FlipBitToWin(num) {
   const bitsArray = Bits.printNumAsUnsignedBits(num, 32);
-  console.log('bitsArray = ', bitsArray);
+  // console.log('bitsArray = ', bitsArray);
 
   let prev1s = 0;
   let cur1s = 0;
