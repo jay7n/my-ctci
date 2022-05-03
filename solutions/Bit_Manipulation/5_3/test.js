@@ -1,4 +1,5 @@
 const Bits = require('../../../datastructures/Bits/solution1');
+
 const testWithSolution = function(title, solution) {
   test(title + ': ' + 
   '', () => {
