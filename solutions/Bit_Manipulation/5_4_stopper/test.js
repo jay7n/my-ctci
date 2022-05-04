@@ -3,9 +3,14 @@ const Bits = require('../../../datastructures/Bits/solution1');
 function testWithSolution (title, solution) {
   test(title + ': ' +
   '', () => {
-    expect(solution(Bits.printBitsAsNum('0101'))).toStrictEqual([
-      Bits.printBitsAsNum('0011'), 
-      Bits.printBitsAsNum('0110')]);
+    expect(solution(Bits.printBitsAsUnsignedNum('0101'.split('')))).toStrictEqual([
+      Bits.printBitsAsUnsignedNum('0011'.split('')), 
+      Bits.printBitsAsUnsignedNum('0110'.split(''))
+    ]);
+    expect(solution(Bits.printBitsAsUnsignedNum('010100'.split('')))).toStrictEqual([
+      Bits.printBitsAsUnsignedNum('001100'.split('')), 
+      Bits.printBitsAsUnsignedNum('011000'.split(''))
+    ]);
   });
 }
 
