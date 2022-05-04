@@ -1,7 +1,7 @@
 const Bits = require('../../../datastructures/Bits/solution1');
 
 module.exports = function NextNumber(num) {
-  const bitsArray = Bits.printNumAsUnsignedBits(num);
+  const bitsArray = Bits.printNumAsUnsignedBits(num, 32);
   console.log('original num = ', num, ' bitsArray = ', bitsArray);
   const smallerNum = getNextSmallerNumByBits(bitsArray);
   const biggerNum = getNextBiggerNumByBits(bitsArray);
@@ -11,31 +11,33 @@ module.exports = function NextNumber(num) {
 function getNextSmallerNumByBits(bitsArray) {
   const newBitsArray = bitsArray.slice();
   let last0sIdxAtRightOf1sIdx = -1;
-  let first1sAtLeftOfLast0sIdx = -1;
+  let tmp0sIdx = -1;
+  let the1sIdx = -1;
 
   for (let i = newBitsArray.length - 1; i > -1; i--) {
     const bit = newBitsArray[i];
 
-    if (bit === 0 && first1sAtLeftOfLast0sIdx === -1) {
-      last0sIdxAtRightOf1sIdx = i;
+    if (bit === 0) {
+      tmp0sIdx = i;
     }
-    if (bit === 1 && last0sIdxAtRightOf1sIdx !== -1) {
-      first1sAtLeftOfLast0sIdx = i;
+    if (bit === 1) {
+      the1sIdx = i;
+      last0sIdxAtRightOf1sIdx = tmp0sIdx;
     }
   }
 
   if (last0sIdxAtRightOf1sIdx === -1) {
     return 'already smallest';
   }
-  if (first1sAtLeftOfLast0sIdx === -1) {
-    return 'already smallest';
+  if (the1sIdx === -1) {
+    return Bits.printBitsAsUnsignedNum(newBitsArray);
   }
 
   newBitsArray[last0sIdxAtRightOf1sIdx] = 1;
-  newBitsArray[first1sAtLeftOfLast0sIdx] = 0;
+  newBitsArray[the1sIdx] = 0;
 
   const res = Bits.printBitsAsUnsignedNum(newBitsArray);
-  console.log('getNextSmallerNumByBits last0sIdxAtRightOf1sIdx = ', last0sIdxAtRightOf1sIdx, 'first1sAtLeftOfLast0sIdx = ', first1sAtLeftOfLast0sIdx, 'newBitsArray = ', newBitsArray, 'res = ', res);
+  console.log('getNextSmallerNumByBits last0sIdxAtRightOf1sIdx = ', last0sIdxAtRightOf1sIdx, 'first1sAtLeftOfLast0sIdx = ', the1sIdx, 'newBitsArray = ', newBitsArray, 'res = ', res);
   return res;
 }
 
