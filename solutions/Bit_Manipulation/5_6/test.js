@@ -7,6 +7,11 @@ function testWithSolution(title, solution) {
       Bits.printBitsAsUnsignedNum('11101'.split('')),
       Bits.printBitsAsUnsignedNum('01111'.split('')),
     )).toBe(2);
+
+    expect(solution(
+      Bits.printBitsAsUnsignedNum('10001'.split('')),
+      Bits.printBitsAsUnsignedNum('01111'.split('')),
+    )).toBe(4);
   });
 }
 
