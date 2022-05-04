@@ -24,6 +24,9 @@ function getNextSmallerNumByBits(bitsArray) {
       the1sIdx = i;
       last0sIdxAtRightOf1sIdx = tmp0sIdx;
     }
+    if (the1sIdx !== -1 && last0sIdxAtRightOf1sIdx !== -1) {
+      break;
+    }
   }
 
   if (last0sIdxAtRightOf1sIdx === -1) {
@@ -43,20 +46,24 @@ function getNextSmallerNumByBits(bitsArray) {
 
 function getNextBiggerNumByBits(bitsArray) {
   const newBitsArray = bitsArray.slice();
-  let first1sIdx = -1;
+
+  let the1sIdx = -1;
   let first0sAtLeftOfFirst1sIdx = -1;
   
   for (let i = newBitsArray.length - 1; i > -1; i--) {
     const bit = newBitsArray[i];
-    if (bit === 1 && first1sIdx === -1) {
-      first1sIdx = i;
+    if (bit === 1) {
+      the1sIdx = i;
     }
-    if (first1sIdx !== -1 && bit === 0 && first0sAtLeftOfFirst1sIdx === -1) {
+    if (bit === 0 && the1sIdx !== -1) {
       first0sAtLeftOfFirst1sIdx = i;
+    }
+    if (the1sIdx !== -1 && first0sAtLeftOfFirst1sIdx !== -1) {
+      break;
     }
   }
 
-  if (first1sIdx === -1) {
+  if (the1sIdx === -1) {
     return Bits.printBitsAsUnsignedNum(newBitsArray);
   }
 
@@ -65,10 +72,10 @@ function getNextBiggerNumByBits(bitsArray) {
     first0sAtLeftOfFirst1sIdx = 0;
   }
 
-  newBitsArray[first1sIdx] = 0;
+  newBitsArray[the1sIdx] = 0;
   newBitsArray[first0sAtLeftOfFirst1sIdx] = 1;
 
   const res = Bits.printBitsAsUnsignedNum(newBitsArray);
-  console.log('getNextBiggerNumByBits first1sIdx = ', first1sIdx, 'first0sAtLeftOfFirst1sIdx = ', first0sAtLeftOfFirst1sIdx, 'newBitsArray = ', newBitsArray, 'res = ', res);
+  console.log('getNextBiggerNumByBits first1sIdx = ', the1sIdx, 'first0sAtLeftOfFirst1sIdx = ', first0sAtLeftOfFirst1sIdx, 'newBitsArray = ', newBitsArray, 'res = ', res);
   return res;
 }

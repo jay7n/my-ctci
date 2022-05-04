@@ -8,8 +8,12 @@ function testWithSolution (title, solution) {
       Bits.printBitsAsUnsignedNum('0110'.split(''))
     ]);
     expect(solution(Bits.printBitsAsUnsignedNum('010100'.split('')))).toStrictEqual([
-      Bits.printBitsAsUnsignedNum('001100'.split('')), 
+      Bits.printBitsAsUnsignedNum('010010'.split('')), 
       Bits.printBitsAsUnsignedNum('011000'.split(''))
+    ]);
+    expect(solution(Bits.printBitsAsUnsignedNum('0111'.split('')))).toStrictEqual([
+      'already smallest', 
+      Bits.printBitsAsUnsignedNum('1011'.split(''))
     ]);
   });
 }
