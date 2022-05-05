@@ -7,6 +7,16 @@ function testWithSolution(title, solution) {
     )).toBe(
       Bits.printBitsAsUnsignedNum('1010'.split(''))
     );
+    expect(solution(
+      Bits.printBitsAsUnsignedNum('110110'.split(''))
+    )).toBe(
+      Bits.printBitsAsUnsignedNum('111001'.split(''))
+    );
+    expect(solution(
+      Bits.printBitsAsUnsignedNum('0011010'.split(''))
+    )).toBe(
+      Bits.printBitsAsUnsignedNum('0100101'.split(''))
+    );
   });
 }
 
