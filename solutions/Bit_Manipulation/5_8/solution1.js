@@ -3,6 +3,7 @@ const Bits = require('../../../datastructures/Bits/solution1');
 module.exports = function DrawLine(screenBytes, width, x1, x2, y) {
   const height = screenBytes.byteLength * 8 / width;
   const u8 = new Uint8Array(screenBytes);
+  drawLineInOneByte();
 }
 
 function drawLineInOneByte(start, end) {
