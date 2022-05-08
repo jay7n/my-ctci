@@ -1,9 +1,30 @@
 const Bits = require('../../../datastructures/Bits/solution1');
 
-module.exports = function DrawLine(screenBytes, width, x1, x2, y) {
-  const height = screenBytes.byteLength * 8 / width;
-  const u8 = new Uint8Array(screenBytes);
-  drawLineInOneByte();
+module.exports = function DrawLine(screenBytes, pixelWidth, x1, x2, y) {
+  const byteWidth = pixelWidth / 8;
+  const height = screenBytes.byteLength / byteWidth;
+  y = clamp(y, 0, height - 1);
+  x1 = clamp(x1, 0, pixelWidth - 1);
+  x2 = clamp(x2, 0, pixelWidth - 1);
+
+  const u8a = new Uint8Array(screenBytes);
+  const startByteOffsetIdx = byteWidth * y + Math.floor(x1 / 8);
+  const startBitIdxInByte = x1 % 8;
+  const endByteOffsetIdx = byteWidth * y + Math.floor(x2 / 8);
+  const endBitIdxInByte = x2 % 8;
+
+  if ( endByteOffsetIdx === startByteOffsetIdx) {
+    const num = drawLineInOneByte(8 - startBitIdxInByte, endBitIdxInByte);
+    u8a.set([num], startByteOffsetIdx + 1);
+  } else {
+    const s = endByteOffsetIdx - startBitIdxInByte;
+  }
+
+  drawLineInOneByte(8 - );
+}
+
+function clamp(value, min, max) {
+  return Math.max(Math.min(value, max), min);
 }
 
 function drawLineInOneByte(start, end) {
