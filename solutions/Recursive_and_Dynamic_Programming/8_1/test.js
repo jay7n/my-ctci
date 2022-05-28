@@ -1,4 +1,3 @@
-
 const testWithSolution = function(title, solution) {
   test(title + '' + 
   '', () => {
