@@ -1,4 +1,12 @@
 module.exports = function RobotInAGrid(columns, maze) {
+  console.log(
+    '----BEGIN----\n' +
+    'name: RobotInAGrid\n' + 
+    `columns:${columns}\n` + 
+    `maze:', ${maze}\n` + 
+    '-------------\n'
+  );
+
   function getElem(x, y) {
     const idx = y * columns + x;
     if (idx < maze.length) {
@@ -51,7 +59,11 @@ module.exports = function RobotInAGrid(columns, maze) {
       }
 
       console.log('paths = ', paths);
-      cache[idx] = paths;
+
+      // !! THIS IS IMPORTANT! WE SHOULD CACHE 'PATHS' AT THAT TIME!
+      // IN OTHER WORDS, WE SHOULD 'FREEZE' THE HISTORY DATA! 
+      cache[idx] = JSON.parse(JSON.stringify(paths)); 
+
       return paths;
     } else {
       return [];
@@ -74,6 +86,9 @@ module.exports = function RobotInAGrid(columns, maze) {
   const tEnd = new Date().getTime();
   console.log(`RobotInAGrid Solution1 for columns = ${columns}, maze = ${maze}, spent time = ${tEnd - tStart}ms and allPaths =`, allPaths);
 
+  console.log(
+    '-----End----'
+  );
   return allPaths;
 
 }
