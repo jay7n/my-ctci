@@ -10,7 +10,7 @@ const testNonDistinctWithSolution = function(title, solution) {
   test(title + '' + 
   'test case 1', () => {
     expect(solution([1, 2, 2, 3, 4, 10, 20, 100])).toStrictEqual([2,3,4]);
-    // expect(solution([-100, 2, 3, 3, 3, 4, 6, 7, 7, 8, 9, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29])).toStrictEqual([3,6,7,13]);
+    expect(solution([-100, 2, 3, 3, 3, 4, 6, 7, 7, 8, 9, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29])).toStrictEqual([3,6,7,13]);
   });
 }
 
