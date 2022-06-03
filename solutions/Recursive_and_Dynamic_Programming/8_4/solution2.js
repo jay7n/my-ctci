@@ -18,6 +18,6 @@ module.exports = function PowerSet(array) {
   }
 
   const res = recursive(array.length - 1, array);
-  console.log('PowerSet res = ', res);
+  console.log('Solution2 PowerSet res = ', res);
   return res;
 }

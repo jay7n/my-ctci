@@ -38,3 +38,6 @@ testDistinctWithSolution('Solution1', Solution1);
 
 const Solution2 = require('./solution2');
 testDistinctWithSolution('Solution2', Solution2);
+
+const Solution3 = require('./solution3_killed_me');
+testDistinctWithSolution('Solution3', Solution3);
