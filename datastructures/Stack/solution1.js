@@ -9,6 +9,12 @@ class Stack {
 		this.listSize = 0;
 	}
 
+  fromArray(array) {
+    for (const elm of array) {
+      this.push(elm);
+    }
+  }
+
 	push(val) {
 		this.list.add(val);
 		this.listSize++;

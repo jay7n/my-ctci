@@ -29,6 +29,11 @@ const testWithSolution = function(title, Stack) {
 		expect(stack.toArray()).toStrictEqual([1,2,3,4,5]);
 		expect(stack.popToArray()).toStrictEqual([5,4,3,2,1]);
 		expect(stack.isEmpty()).toBe(true);
+
+    stack.fromArray([1,2,3,4,5]);
+		expect(stack.toArray()).toStrictEqual([1,2,3,4,5]);
+		expect(stack.popToArray()).toStrictEqual([5,4,3,2,1]);
+		expect(stack.isEmpty()).toBe(true);
 	});
 }
 
