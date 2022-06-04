@@ -13,6 +13,7 @@ class Stack {
     for (const elm of array) {
       this.push(elm);
     }
+    return this;
   }
 
 	push(val) {
