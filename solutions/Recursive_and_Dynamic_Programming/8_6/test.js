@@ -1,6 +1,6 @@
 const { Stack } = require('../../../datastructures/Stack/solution1');
 
-const testDistinctWithSolution = function (title, solution) {
+const testWithSolution = function (title, solution) {
   test(title +
     'test case 1', () => {
       const tower1 = new Stack().fromArray([
@@ -62,4 +62,4 @@ const testDistinctWithSolution = function (title, solution) {
 }
 
 const Solution1 = require('./solution1');
-testDistinctWithSolution('Solution1', Solution1);
+testWithSolution('Solution1', Solution1);

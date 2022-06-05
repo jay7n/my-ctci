@@ -1,4 +1,4 @@
-const testDistinctWithSolution = function(title, solution) {
+const testWithSolution = function(title, solution) {
   test(title + 
   'test case 1', () => {
     const subSet = solution([1,2]);
@@ -34,10 +34,10 @@ const testDistinctWithSolution = function(title, solution) {
 
 
 const Solution1 = require('./solution1');
-testDistinctWithSolution('Solution1', Solution1);
+testWithSolution('Solution1', Solution1);
 
 const Solution2 = require('./solution2');
-testDistinctWithSolution('Solution2', Solution2);
+testWithSolution('Solution2', Solution2);
 
 const Solution3 = require('./solution3_killed_me');
-testDistinctWithSolution('Solution3', Solution3);
+testWithSolution('Solution3', Solution3);

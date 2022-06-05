@@ -1,4 +1,4 @@
-const testDistinctWithSolution = function(title, solution) {
+const testWithSolution = function(title, solution) {
   test(title + 
   '', () => {
     expect(solution(1,1)).toBe(1);
@@ -9,7 +9,7 @@ const testDistinctWithSolution = function(title, solution) {
 }
 
 const Solution1 = require('./solution1');
-testDistinctWithSolution('Solution1', Solution1);
+testWithSolution('Solution1', Solution1);
 
 const Solution2 = require('./solution2');
-testDistinctWithSolution('Solution2', Solution2);
+testWithSolution('Solution2', Solution2);
