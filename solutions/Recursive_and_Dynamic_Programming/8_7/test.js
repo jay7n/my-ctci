@@ -13,6 +13,13 @@ const testWithSolution = function(title, solution) {
     expect(allPermutations).toEqual(expect.arrayContaining(expected));
     expect(expected).toEqual(expect.arrayContaining(allPermutations));
   });
+  test(title + 
+  'test case 3', () => {
+    const allPermutations = solution('abcd');
+    const expected = ['abcd', 'abdc', 'acbd', 'acdb', 'adbc', 'adcb', 'bacd', 'badc', 'bcad', 'bcda', 'bdac', 'bdca', 'cabd', 'cadb', 'cbad', 'cbda', 'cdab', 'cdba', 'dabc', 'dacb', 'dbac', 'dbca', 'dcab', 'dcba'];
+    expect(allPermutations).toEqual(expect.arrayContaining(expected));
+    expect(expected).toEqual(expect.arrayContaining(allPermutations));
+  });
 }
 
 const Solution1 = require('./solution1');
