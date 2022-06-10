@@ -3,8 +3,8 @@ const testWithSolution = function(title, solution) {
   'test case 1', () => {
     const allParentheses = solution(3);
     const expected = ['((()))', '(()())', '(())()', '()(())', '()()()'];
-    expect(allPermutations).toEqual(expect.arrayContaining(expected));
-    expect(expected).toEqual(expect.arrayContaining(allPermutations));
+    expect(allParentheses).toEqual(expect.arrayContaining(expected));
+    expect(expected).toEqual(expect.arrayContaining(allParentheses));
   });
 }
 

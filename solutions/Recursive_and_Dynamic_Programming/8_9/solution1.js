@@ -7,23 +7,25 @@ module.exports = function Parens(num) {
   };
 
   function recursive(parenSet) {
-    let leftRes = [''];
-    let rightRes = [''];
+    if (parenSet.left === parenSet.right && parenSet.right  === 0) {
+      return [''];
+    }
+    let leftRes = [];
     if (parenSet.left > 0) {
-      parenSet.left--;
-      leftRes = recursive(parenSet);
+      leftRes = recursive({left: parenSet.left - 1, right: parenSet.right});
       leftRes = leftRes.map(paren => {
         return '(' + paren;
       });
-      parenSet.left++;
     }
+    let rightRes = [];
     if (parenSet.right > 0) {
-      parenSet.right--;
-      rightRes = recursive(parenSet);
+      rightRes = recursive({left: parenSet.left, right: parenSet.right - 1});
       rightRes = rightRes.map(paren => {
         return ')' + paren;
       });
     }
+
+    console.log('leftRes = ', leftRes, 'rightRes = ', rightRes);
 
     return [].concat(leftRes, rightRes);
   }
