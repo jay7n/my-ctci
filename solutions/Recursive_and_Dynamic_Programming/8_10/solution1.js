@@ -1,3 +1,3 @@
-module.exports = function PaintFill() {
+module.exports = function PaintFill(picArray, x, y) {
 
 }
