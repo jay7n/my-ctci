@@ -1,3 +1,3 @@
-module.export = function Coins() {
+module.export = function Coins(nCents) {
 
 }
