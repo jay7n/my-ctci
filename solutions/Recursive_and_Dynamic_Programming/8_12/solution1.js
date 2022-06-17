@@ -1,6 +1,4 @@
 module.exports = function EightQueens(queenNum, boardWidth = 8) {
-  const boardSize = boardWidth * boardWidth;
-
   function isAvailableForGrid(x0, y0, x, y) {
     if (x < 0 || x > boardWidth - 1) {
       return false;
@@ -31,10 +29,10 @@ module.exports = function EightQueens(queenNum, boardWidth = 8) {
           }
         }
         if (allPassed) {
-          takenList.push({x, y});
-          if (takenList.length === queenNum ) {
-            ways.push(takenList.slice());
-            takenList.splice(0, takenList.length);
+          const cpyTakenList = takenList.slice();
+          cpyTakenList.push({x, y});
+          if (cpyTakenList.length === queenNum) {
+            ways.push(cpyTakenList);
           } else {
             let nextRow, nextColumn;
             if (x === boardWidth - 1) {
@@ -44,11 +42,19 @@ module.exports = function EightQueens(queenNum, boardWidth = 8) {
               nextColumn = x + 1;
               nextRow = y;
             }
-            recursive(nextRow, nextColumn, takenList);
+            recursive(nextRow, nextColumn, cpyTakenList, ways);
           }
         }
       }
     }
   }
 
+  const takenList = [];
+  const ways = [];
+  recursive(0, 0, takenList, ways);
+
+  console.log('ways = ', ways);
+  console.log('ways length = ', ways.length);
+
+  return ways;
 }
