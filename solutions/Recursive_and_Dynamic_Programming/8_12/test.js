@@ -1,7 +1,7 @@
 const testWithSolution = function(title, solution) {
   test(title + 
   'test case 1', () => {
-    const waysOfArranging = solution(1);
+    const waysOfArranging = solution(8, 8);
     const X = 'X';
     const expected = [
 `
