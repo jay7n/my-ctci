@@ -1,4 +1,4 @@
-module.exports = function EightQueens(queenNum, boardWidth = 8) {
+module.exports = function EightQueens(queenNum, boardWidth = 8, queenSign = 'X') {
   function isAvailableForGrid(x0, y0, x, y) {
     if (x < 0 || x > boardWidth - 1) {
       return false;
@@ -49,6 +49,24 @@ module.exports = function EightQueens(queenNum, boardWidth = 8) {
     }
   }
 
+  function printChessBoard(queensWay) {
+    let res = [];
+    for (let i = 0; i < boardWidth; i++) {
+      for (let j = 0; j < boardWidth; j++) {
+        const hasQueen = queensWay.findIndex(({x, y}) => {
+          return x == j && y == i; 
+        }) !== -1;
+        if (hasQueen) {
+          res.push(queenSign);
+        } else {
+          res.push('0');
+        }
+      }
+      res.push('\n');
+    }
+    console.log('chess board with queensWay = ', queensWay, 'is:\n', res.join());
+  }
+
   const takenList = [];
   const ways = [];
   recursive(0, 0, takenList, ways);
@@ -56,5 +74,9 @@ module.exports = function EightQueens(queenNum, boardWidth = 8) {
   console.log('ways = ', ways);
   console.log('ways length = ', ways.length);
 
-  return ways;
+  ways.map(way => {
+    printChessBoard(way);
+  });
+
+  return ways.length;
 }
