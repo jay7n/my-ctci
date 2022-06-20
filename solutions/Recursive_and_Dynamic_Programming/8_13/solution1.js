@@ -1,3 +1,3 @@
-module.exports = function StackOfBoxes() {
+module.exports = function StackOfBoxes(boxes) {
 
 }
