@@ -29,7 +29,6 @@ const testWithSolution = function(title, solution) {
       [1, 2, 3],
       [2, 3, 4],
       [10, 4, 6],
-      // [4, 7, 2],
     ];
 
     const possibleTallestHeight = solution(boxes);
@@ -49,6 +48,20 @@ const testWithSolution = function(title, solution) {
     const possibleTallestHeight = solution(boxes);
     expect(possibleTallestHeight).toBe(12);
   });
+
+  test(title + 
+    'test case 4', () => {
+      const boxes = [
+        // w, h, d
+        [1, 2, 3],
+        [2, 3, 4],
+        [10, 4, 6],
+        [4, 7, 2],
+      ];
+  
+      const possibleTallestHeight = solution(boxes);
+      expect(possibleTallestHeight).toBe(9);
+    });
 }
 
 const Solution1 = require('./solution1');
