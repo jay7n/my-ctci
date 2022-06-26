@@ -1,5 +1,9 @@
 const testWithSolution = function(title, solution) {
   test(title + 
+  ' test case 0', () => {
+
+  });
+  test(title + 
   ' test case 1', () => {
     const ways = solution('1^0|0|1', false);
     expect(ways).toBe(2);
