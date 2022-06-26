@@ -10,18 +10,20 @@ module.exports = function BooleanEvaluation(expression, desiredBool) {
     }
   }
 
-  function evalExpression(expr) {
+  function evalExpr(expr) {
     exprArr = expr.split('');
-    let left, op, right;
-    for (let i = 0; i < exprArr.length; i+=3) {
-      if (left) {
-
-      } else {
-        left = exprArr[i];
-        op = exprArr[i + 1];
-        right = exprArr[i + 2];
-        left = evalExpression(left, op, right);
-      }
+    let left = exprArr[0];
+    let op, right;
+    for (let i = 2; i < exprArr.length; i+=2) {
+      right = exprArr[i];
+      op = exprArr[i - 1];
+      left = evalSingleExpr(left, op, right);
     }
+    return left;
   }
+
+  const result = evalExpr(expression);
+  console.log('result of expression "', expression, '" is ', result);
+
+  return result;
 }
