@@ -1,4 +1,4 @@
-const { evalExpr, evalSingleExpr } = require('./helpers');
+const { evalSimpleExpr, evalSingleExpr, evalComplexExpr } = require('./helpers');
 
 const testWithSolution = function(title, solution) {
   test('test helpers', () => {
@@ -9,22 +9,25 @@ const testWithSolution = function(title, solution) {
     expect(evalSingleExpr(1, '^', 1)).toBe(0);
     expect(evalSingleExpr(0, '^', 0)).toBe(0);
 
-    expect(evalExpr('1&0')).toBe(0);
-    expect(evalExpr('1&1')).toBe(1);
-    expect(evalExpr('1|1')).toBe(1);
-    expect(evalExpr('1|0')).toBe(1);
-    expect(evalExpr('1^0')).toBe(1);
-    expect(evalExpr('1^1')).toBe(0);
-    expect(evalExpr('0^0')).toBe(0);
+    expect(evalSimpleExpr('1&0')).toBe(0);
+    expect(evalSimpleExpr('1&1')).toBe(1);
+    expect(evalSimpleExpr('1|1')).toBe(1);
+    expect(evalSimpleExpr('1|0')).toBe(1);
+    expect(evalSimpleExpr('1^0')).toBe(1);
+    expect(evalSimpleExpr('1^1')).toBe(0);
+    expect(evalSimpleExpr('0^0')).toBe(0);
 
-    expect(evalExpr('1&1&1')).toBe(1);
-    expect(evalExpr('1&1&0')).toBe(0);
-    expect(evalExpr('1&0&1')).toBe(0);
-    expect(evalExpr('0&1&1')).toBe(0);
-    expect(evalExpr('1&1|1&1')).toBe(1);
-    expect(evalExpr('1&0|1&1')).toBe(1);
-    expect(evalExpr('1&0|0&1')).toBe(0);
-    expect(evalExpr('1&1^1&1')).toBe(0);
+    expect(evalSimpleExpr('1&1&1')).toBe(1);
+    expect(evalSimpleExpr('1&1&0')).toBe(0);
+    expect(evalSimpleExpr('1&0&1')).toBe(0);
+    expect(evalSimpleExpr('0&1&1')).toBe(0);
+    expect(evalSimpleExpr('1&1|1&1')).toBe(1);
+    expect(evalSimpleExpr('1&0|1&1')).toBe(1);
+    expect(evalSimpleExpr('1&0|0&1')).toBe(0);
+    expect(evalSimpleExpr('1&1^1&1')).toBe(0);
+
+    expect(evalComplexExpr('(1|0)&(1|0)')).toBe(1);
+    expect(evalComplexExpr('1&(0^(1|0))')).toBe(1);
   });
   // test(title + 
   // ' test case 1', () => {
