@@ -22,17 +22,32 @@ function evalSimpleExpr(expr) {
 }
 
 function findRightMatchingParenIdx(exprArr, leftParenIdx) {
+  let count = 1;
+  let i = leftParenIdx + 1;
+  while (i < exprArr.length) {
+    if (exprArr[i] == '(') count++;
+    else if (exprArr[i] == ')') count--;
 
+    if (count === 0 ) {
+      return i;
+    }
+    i++;
+  }
+  assert('should not happen');
 }
 
 function evalComplexExpr(expr) {
   function recursive(exprArr) {
+    console.log('evalComplexExpr recursive exprArr = ', exprArr);
     let subExprArr = [];
     let i = 0;
     while (i < exprArr.length) {
+      console.log('exprArr = ', exprArr, 'i = ', i, 'exprArr[i] = ', exprArr[i]);
       if (exprArr[i] == '(') {
         const rightIdx = findRightMatchingParenIdx(exprArr, i);
+        console.log('rightIdx= ', rightIdx);
         const val = recursive(exprArr.slice(i+1, rightIdx));
+        console.log('val = ', val);
         subExprArr.push(val);
         i = rightIdx + 1;
       } else {
@@ -40,10 +55,11 @@ function evalComplexExpr(expr) {
         i++;
       }
     }
+    console.log('subExprArr = ', subExprArr);
     return evalSimpleExpr(subExprArr.join(''));
   }
   const exprArr = expr.split('');
-  recursive(exprArr);
+  return recursive(exprArr);
 }
 
 module.exports = {
