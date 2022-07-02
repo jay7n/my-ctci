@@ -26,6 +26,8 @@ const testWithSolution = function(title, solution) {
     expect(evalSimpleExpr('1&0|0&1')).toBe(0);
     expect(evalSimpleExpr('1&1^1&1')).toBe(0);
 
+    expect(evalComplexExpr('(1)|(0)')).toBe(1);
+    expect(evalComplexExpr('(1)&(0)')).toBe(0);
     expect(evalComplexExpr('(1|0)&(1|0)')).toBe(1);
     expect(evalComplexExpr('1&(0^(1|0))')).toBe(1);
   });
